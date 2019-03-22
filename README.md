@@ -44,6 +44,10 @@ Download repository:
 
     $ git clone https://github.com/baowenbo/DAIN.git
 
+Before building Pytorch extensions, be sure you have `pytorch version >= 1.0.0`:
+    
+    $ python -c "import torch; print(torch.__version__)"
+    
 Generate our PyTorch extensions:
     
     $ cd DAIN
