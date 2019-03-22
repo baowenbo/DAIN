@@ -1,7 +1,12 @@
 # DAIN
 Depth-Aware Video Frame Interpolation
 
-Wenbo Bao, Wei-Sheng Lai, Chao Ma, Xiaoyun Zhang, Zhiyong Gao, Ming-Hsuan Yang
+[Wenbo Bao](https://sites.google.com/view/wenbobao/home)
+[Wei-Sheng Lai](http://graduatestudents.ucmerced.edu/wlai24/), 
+[Chao Ma](https://sites.google.com/site/chaoma99/),
+Xiaoyun Zhang, 
+Zhiyong Gao, 
+and [Ming-Hsuan Yang](http://faculty.ucmerced.edu/mhyang/)
 
 IEEE Conference on Computer Vision and Pattern Recognition, Long Beach, CVPR 2019
 
