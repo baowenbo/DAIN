@@ -34,10 +34,10 @@ If you find the code and datasets useful in your research, please cite:
     }
     
 ### Requirements and Dependencies
-- Python (we test with Python=3.6.8 in Anaconda3=4.1.1)
+- Python (we test with Python = 3.6.8 in Anaconda3 = 4.1.1)
 - Cuda & Cudnn (we test with Cuda = 9.0 and Cudnn = 7.0)
-- PyTorch (the customized depth-aware flow projection and other layers require ATen API in PyTorch=1.0.0)
-- GCC (Compiling PyTorch extension .c/.cu requires gcc=4.9.1 and nvcc=9.0 compilers)
+- PyTorch (the customized depth-aware flow projection and other layers require ATen API in PyTorch = 1.0.0)
+- GCC (Compiling PyTorch 1.0.0 extension files (.c/.cu) requires gcc = 4.9.1 and nvcc = 9.0 compilers)
 - NVIDIA GPU (we use Titan X (Pascal) with compute = 6.1, but we support compute_50/52/60/61 devices, check [this](https://github.com/baowenbo/DAIN/blob/master/my_package/DepthFlowProjection/setup.py))
 
 ### Installation
