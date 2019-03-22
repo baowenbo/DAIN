@@ -36,3 +36,8 @@ If you find the code and datasets useful in your research, please cite:
         year      = {2019}
     }
     
+### Requirements and Dependencies
+- Cuda & Cudnn (we test with Cuda = 9.0 and Cudnn = 7.0)
+- PyTorch (the customized depth-aware flow projection and other layers require ATen API in PyTorch1.0.0)
+
+
