@@ -1,0 +1,40 @@
+------------ Options -------------
+batchSize: 1
+beta1: 0.5
+checkpoints_dir: ./checkpoints/
+continue_train: False
+display_freq: 100
+display_id: 1
+display_winsize: 256
+fineSize: 256
+gpu_ids: [0, 1]
+identity: 0.0
+input_nc: 3
+isTrain: True
+lambda_A: 10.0
+lambda_B: 10.0
+loadSize: 286
+lr: 0.0002
+max_dataset_size: inf
+model: pix2pix
+nThreads: 2
+name: test_local
+ndf: 64
+ngf: 64
+niter: 100
+niter_decay: 100
+no_flip: False
+no_html: False
+no_lsgan: False
+norm: instance
+output_nc: 3
+phase: train
+pool_size: 50
+print_freq: 100
+save_epoch_freq: 5
+save_latest_freq: 5000
+serial_batches: False
+use_dropout: False
+which_epoch: latest
+which_model_netG: unet_256
+-------------- End ----------------
