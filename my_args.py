@@ -26,9 +26,9 @@ parser.add_argument('--dataset_split', type = int, default=97, help = 'Split a d
 
 parser.add_argument('--seed', type=int, default=1, help='random seed (default: 1)')
 
-parser.add_argument('--numEpoch', '-e', type = int, default=100, help= 'Number of epochs to train(default:150)')
+# parser.add_argument('--numEpoch', '-e', type = int, default=100, help= 'Number of epochs to train(default:150)')
 
-parser.add_argument('--batch_size', '-b',type = int ,default=1, help = 'batch size (default:1)' )
+# parser.add_argument('--batch_size', '-b',type = int ,default=1, help = 'batch size (default:1)' )
 parser.add_argument('--workers', '-w', type =int,default=8, help = 'parallel workers for loading training samples (default : 1.6*10 = 16)')
 parser.add_argument('--channels', '-c', type=int,default=3,choices = [1,3], help ='channels of images (default:3)')
 parser.add_argument('--filter_size', '-f', type=int, default=4, help = 'the size of filters used (default: 4)',
@@ -36,31 +36,31 @@ parser.add_argument('--filter_size', '-f', type=int, default=4, help = 'the size
                     )
 
 
-parser.add_argument('--lr', type =float, default= 0.002, help= 'the basic learning rate for three subnetworks (default: 0.002)')
-parser.add_argument('--rectify_lr', type=float, default=0.001, help  = 'the learning rate for rectify/refine subnetworks (default: 0.001)')
+# parser.add_argument('--lr', type =float, default= 0.002, help= 'the basic learning rate for three subnetworks (default: 0.002)')
+# parser.add_argument('--rectify_lr', type=float, default=0.001, help  = 'the learning rate for rectify/refine subnetworks (default: 0.001)')
 
 parser.add_argument('--save_which', '-s', type=int, default=1, choices=[0,1], help='choose which result to save: 0 ==> interpolated, 1==> rectified')
 parser.add_argument('--time_step',  type=float, default=0.5, choices=[0.5,0.25,0.2,0.125,0.1], help='choose the time steps')
-parser.add_argument('--flow_lr_coe', type = float, default=0.01, help = 'relative learning rate w.r.t basic learning rate (default: 0.01)')
-parser.add_argument('--occ_lr_coe', type = float, default=1.0, help = 'relative learning rate w.r.t basic learning rate (default: 1.0)')
-parser.add_argument('--filter_lr_coe', type = float, default=1.0, help = 'relative learning rate w.r.t basic learning rate (default: 1.0)')
-parser.add_argument('--ctx_lr_coe', type = float, default=1.0, help = 'relative learning rate w.r.t basic learning rate (default: 1.0)')
-parser.add_argument('--depth_lr_coe', type = float, default=0.01, help = 'relative learning rate w.r.t basic learning rate (default: 0.01)')
-parser.add_argument('--deblur_lr_coe', type = float, default=0.01, help = 'relative learning rate w.r.t basic learning rate (default: 0.01)')
+# parser.add_argument('--flow_lr_coe', type = float, default=0.01, help = 'relative learning rate w.r.t basic learning rate (default: 0.01)')
+# parser.add_argument('--occ_lr_coe', type = float, default=1.0, help = 'relative learning rate w.r.t basic learning rate (default: 1.0)')
+# parser.add_argument('--filter_lr_coe', type = float, default=1.0, help = 'relative learning rate w.r.t basic learning rate (default: 1.0)')
+# parser.add_argument('--ctx_lr_coe', type = float, default=1.0, help = 'relative learning rate w.r.t basic learning rate (default: 1.0)')
+# parser.add_argument('--depth_lr_coe', type = float, default=0.01, help = 'relative learning rate w.r.t basic learning rate (default: 0.01)')
+# parser.add_argument('--deblur_lr_coe', type = float, default=0.01, help = 'relative learning rate w.r.t basic learning rate (default: 0.01)')
 
-parser.add_argument('--alpha', type=float,nargs='+', default=[0.0, 1.0], help= 'the ration of loss for interpolated and rectified result (default: [0.0, 1.0])')
+# parser.add_argument('--alpha', type=float,nargs='+', default=[0.0, 1.0], help= 'the ration of loss for interpolated and rectified result (default: [0.0, 1.0])')
 
-parser.add_argument('--epsilon', type = float, default=1e-6, help = 'the epsilon for charbonier loss,etc (default: 1e-6)')
-parser.add_argument('--weight_decay', type = float, default=0, help = 'the weight decay for whole network ' )
-parser.add_argument('--patience', type=int, default=5, help = 'the patience of reduce on plateou')
-parser.add_argument('--factor', type = float, default=0.2, help = 'the factor of reduce on plateou')
-
+# parser.add_argument('--epsilon', type = float, default=1e-6, help = 'the epsilon for charbonier loss,etc (default: 1e-6)')
+# parser.add_argument('--weight_decay', type = float, default=0, help = 'the weight decay for whole network ' )
+# parser.add_argument('--patience', type=int, default=5, help = 'the patience of reduce on plateou')
+# parser.add_argument('--factor', type = float, default=0.2, help = 'the factor of reduce on plateou')
+#
 parser.add_argument('--pretrained', dest='SAVED_MODEL', default=None, help ='path to the pretrained model weights')
 parser.add_argument('--no-date', action='store_true', help='don\'t append date timestamp to folder' )
 parser.add_argument('--use_cuda', default= True, type = bool, help='use cuda or not')
 parser.add_argument('--use_cudnn',default=1,type=int, help = 'use cudnn or not')
 parser.add_argument('--dtype', default=torch.cuda.FloatTensor, choices = [torch.cuda.FloatTensor,torch.FloatTensor],help = 'tensor data type ')
-parser.add_argument('--resume', default='', type=str, help='path to latest checkpoint (default: none)')
+# parser.add_argument('--resume', default='', type=str, help='path to latest checkpoint (default: none)')
 
 
 parser.add_argument('--uid', type=str, default= None, help='unique id for the training')
