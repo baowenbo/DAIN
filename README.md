@@ -38,6 +38,24 @@ If you find the code and datasets useful in your research, please cite:
     
 ### Requirements and Dependencies
 - Cuda & Cudnn (we test with Cuda = 9.0 and Cudnn = 7.0)
-- PyTorch (the customized depth-aware flow projection and other layers require ATen API in PyTorch1.0.0)
+- PyTorch (the customized depth-aware flow projection and other layers require ATen API in PyTorch=1.0.0)
+- GCC (Compiling PyTorch extension .c/.cu requires gcc=4.9.1 and nvcc=9.0 compilers)
 
+### Installation
+Download repository:
 
+    $ git clone https://github.com/baowenbo/DAIN.git
+
+Make model weights dir and Middlebury dataset dir:
+    $ cd DAIN
+    $ mkdir model_weights
+    $ mkdir MiddleBurySet
+    
+Generate our PyTorch extensions:
+    $ cd my_package 
+    $ ./build.sh
+
+Generate the Correlation package required by [PWCNet](also see https://github.com/NVlabs/PWC-Net/tree/master/PyTorch/external_packages/correlation-pytorch-master):
+    $ cd PWCNet/correlation_package_pytorch1_0
+    $ ./build.sh
+    
