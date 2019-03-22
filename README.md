@@ -17,9 +17,6 @@ IEEE Conference on Computer Vision and Pattern Recognition, Long Beach, CVPR 201
 1. [Requirements and Dependencies](#requirements-and-dependencies)
 1. [Installation](#installation)
 1. [Test Pre-trained Models](#test-pre-trained-models)
-1. [Training LapSRN](#training-lapsrn)
-1. [Training MS-LapSRN](#training-ms-lapsrn)
-1. [Third-Party Implementation](#third-party-implementation)
 
 ### Introduction
 We propose the Depth-Aware video frame INterpolation (DAIN) model to explicitly detect the occlusion by exploring the depth cue.
@@ -37,6 +34,7 @@ If you find the code and datasets useful in your research, please cite:
     }
     
 ### Requirements and Dependencies
+- Python (we test with Python=3.6.8 in Anaconda3=4.1.1)
 - Cuda & Cudnn (we test with Cuda = 9.0 and Cudnn = 7.0)
 - PyTorch (the customized depth-aware flow projection and other layers require ATen API in PyTorch=1.0.0)
 - GCC (Compiling PyTorch extension .c/.cu requires gcc=4.9.1 and nvcc=9.0 compilers)
@@ -46,19 +44,44 @@ Download repository:
 
     $ git clone https://github.com/baowenbo/DAIN.git
 
+Generate our PyTorch extensions:
+    
+    $ cd DAIN
+    $ cd my_package 
+    $ ./build.sh
+
+Generate the Correlation package required by [PWCNet](also see https://github.com/NVlabs/PWC-Net/tree/master/PyTorch/external_packages/correlation-pytorch-master):
+    
+    $ cd ../PWCNet/correlation_package_pytorch1_0
+    $ ./build.sh
+
+
+### Test Pre-trained Models
 Make model weights dir and Middlebury dataset dir:
 
     $ cd DAIN
     $ mkdir model_weights
     $ mkdir MiddleBurySet
     
-Generate our PyTorch extensions:
-    
-    $ cd my_package 
-    $ ./build.sh
+Download pretrained models, 
 
-Generate the Correlation package required by [PWCNet](also see https://github.com/NVlabs/PWC-Net/tree/master/PyTorch/external_packages/correlation-pytorch-master):
+    $ cd model_weights
+    $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/best.pth
     
-    $ cd PWCNet/correlation_package_pytorch1_0
-    $ ./build.sh
+and Middlebury dataset:
+    
+    $ cd ../MiddleBurySet
+    $ wget http://vision.middlebury.edu/flow/data/comp/zip/other-color-allframes.zip
+    $ unzip other-color-allframes.zip
+    $ wget http://vision.middlebury.edu/flow/data/comp/zip/other-gt-flow.zip
+    $ unzip other-gt-flow.zip
+    $ cd ..
+
+We are good to go by:
+
+    $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury.py
+
+The interpolated results are under `MiddleBurySet/other-result-author/[random numer]/'.
+
+
     
