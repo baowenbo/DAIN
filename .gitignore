@@ -4,8 +4,8 @@
 # But not these files...
 # !.gitignore
 
-model_weights/
-MiddleBurySet/
+model_weights/*
+MiddleBurySet/*
 
 
 # Created by .ignore support plugin (hsz.mobi)

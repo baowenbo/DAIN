@@ -17,9 +17,9 @@ torch.backends.cudnn.benchmark = True # to speed up the
 
 
 DO_MiddleBurryOther = True
-MB_Other_DATA = "../MiddleBurySet/other-data/"
-MB_Other_RESULT = "../MiddleBurySet/other-result-author/"
-MB_Other_GT = "../MiddleBurySet/other-gt-interp/"
+MB_Other_DATA = "./MiddleBurySet/other-data/"
+MB_Other_RESULT = "./MiddleBurySet/other-result-author/"
+MB_Other_GT = "./MiddleBurySet/other-gt-interp/"
 if not os.path.exists(MB_Other_RESULT):
     os.mkdir(MB_Other_RESULT)
 
@@ -33,7 +33,7 @@ model = networks.__dict__[args.netName](channel=args.channels,
 if args.use_cuda:
     model = model.cuda()
 
-args.SAVED_MODEL = '../model_weights/best.pth'
+args.SAVED_MODEL = './model_weights/best.pth'
 if os.path.exists(args.SAVED_MODEL):
     print("The testing model weight is: " + args.SAVED_MODEL)
     if not args.use_cuda:
