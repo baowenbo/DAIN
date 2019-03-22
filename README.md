@@ -47,15 +47,18 @@ Download repository:
     $ git clone https://github.com/baowenbo/DAIN.git
 
 Make model weights dir and Middlebury dataset dir:
+
     $ cd DAIN
     $ mkdir model_weights
     $ mkdir MiddleBurySet
     
 Generate our PyTorch extensions:
+    
     $ cd my_package 
     $ ./build.sh
 
 Generate the Correlation package required by [PWCNet](also see https://github.com/NVlabs/PWC-Net/tree/master/PyTorch/external_packages/correlation-pytorch-master):
+    
     $ cd PWCNet/correlation_package_pytorch1_0
     $ ./build.sh
     
