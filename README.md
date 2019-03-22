@@ -92,6 +92,6 @@ The interpolated results are under `MiddleBurySet/other-result-author/[random nu
 [Wenbo Bao](mailto:bwb0813@gmail.com); [Wei-Sheng (Jason) Lai](mailto:phoenix104104@gmail.com)
 
 ### License
-see MIT [License](https://github.com/baowenbo/DAIN/blob/master/LICENSE)
+See MIT [License](https://github.com/baowenbo/DAIN/blob/master/LICENSE)
 
     
