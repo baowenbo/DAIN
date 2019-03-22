@@ -81,7 +81,7 @@ We are good to go by:
 
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury.py
 
-The interpolated results are under `MiddleBurySet/other-result-author/[random numer]/'.
+The interpolated results are under `MiddleBurySet/other-result-author/[random numer]/`.
 
 
     
