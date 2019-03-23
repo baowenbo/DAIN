@@ -91,9 +91,16 @@ We are good to go by:
 The interpolated results are under `MiddleBurySet/other-result-author/[random numer]/`.
 
 ### Slow-motion Generation
-Run the following code with the multiframe interpolation network architecture:
+Our model is fully capable to generate slow-motion with slight modification on the network architecture.
+Run the following code with to generate x4 slow-motion effect:
 
-    $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py --netName DAIN_slowmotion
+    $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py --netName DAIN_slowmotion --time_step 0.25
+
+or 
+
+    $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py --netName DAIN_slowmotion --time_step 0.125
+    $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py --netName DAIN_slowmotion --time_step 0.1
+for x8 and x10 slow-motion respectively.
 
 ### Training New Models
 Download the Vimeo90K triplet dataset for video frame interpolation task, also see [here](https://github.com/anchen1011/toflow/blob/master/download_dataset.sh) by [Xue et al., IJCV19](https://arxiv.org/abs/1711.09078).
