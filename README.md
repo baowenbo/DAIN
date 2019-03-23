@@ -91,7 +91,7 @@ We are good to go by:
 The interpolated results are under `MiddleBurySet/other-result-author/[random numer]/`.
 
 ### Slow-motion Generation
-Our model is fully capable to generate slow-motion with slight modification on the network architecture.
+Our model is fully capable of generating slow-motion effect with minor modification on the network architecture.
 Run the following code with to generate x4 slow-motion effect:
 
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py --netName DAIN_slowmotion --time_step 0.25
