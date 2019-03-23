@@ -23,7 +23,8 @@ IEEE Conference on Computer Vision and Pattern Recognition, Long Beach, CVPR 201
 ### Introduction
 We propose the **D**epth-**A**ware video frame **IN**terpolation (**DAIN**) model to explicitly detect the occlusion by exploring the depth cue.
 We develop a depth-aware flow projection layer to synthesize intermediate flows that preferably sample closer objects than farther ones.
-Our method achieves state-of-the-art performance on the Middlebury dataset.
+Our method achieves state-of-the-art performance on the Middlebury dataset. 
+We provide videos [here](https://www.youtube.com/watch?v=-f8f0igQi5I&t=5s).
 
 
 <!--哈哈我是注释，不会在浏览器中显示。
