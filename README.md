@@ -17,9 +17,10 @@ IEEE Conference on Computer Vision and Pattern Recognition, Long Beach, CVPR 201
 1. [Requirements and Dependencies](#requirements-and-dependencies)
 1. [Installation](#installation)
 1. [Test Pre-trained Models](#test-pre-trained-models)
+1. [Training New Models](#training-new-models)
 
 ### Introduction
-We propose the Depth-Aware video frame INterpolation (DAIN) model to explicitly detect the occlusion by exploring the depth cue.
+We propose the **D**epth-**A**ware video frame **IN**terpolation (**DAIN**) model to explicitly detect the occlusion by exploring the depth cue.
 We develop a depth-aware flow projection layer to synthesize intermediate flows that preferably sample closer objects than farther ones.
 Our method achieves state-of-the-art performance on the Middlebury dataset.
 
@@ -87,6 +88,35 @@ We are good to go by:
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury.py
 
 The interpolated results are under `MiddleBurySet/other-result-author/[random numer]/`.
+
+### Training New Models
+Download the Vimeo90K triplet dataset for video frame interpolation task, also see [here]().
+    
+    $ cd DAIN
+    $ mkdir /path/to/your/dataset & cd /path/to/your/dataset 
+    $ wget http://data.csail.mit.edu/tofu/dataset/vimeo_triplet.zip
+    $ unzip vimeo_triplet.zip
+    $ rm vimeo_triplet.zip
+
+Download the pretrained MegaDepth and PWCNet models
+    
+    $ cd MegaDepth/checkpoints/test_local
+    $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/best_generalization_net_G.pth
+    $ cd ../../../PWCNet
+    $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/pwc_net_pth.tar
+    $ cd  ..
+    
+Run the training script:
+
+    $ CUDA_VISIBLE_DEVICES=0 python main.py
+    
+The optimized models will be saved in the `model_weights/[random number]` directory.
+
+Replace the pre-trained `model_weights/best.pth` model with the newly trained `model_weights/[random number]/best.pth` model.
+Then test the new model by executing: 
+
+    $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury.py
+
 
 ### Contact
 [Wenbo Bao](mailto:bwb0813@gmail.com); [Wei-Sheng (Jason) Lai](mailto:phoenix104104@gmail.com)
