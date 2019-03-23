@@ -57,7 +57,7 @@ Generate our PyTorch extensions:
     $ cd my_package 
     $ ./build.sh
 
-Generate the Correlation package required by [PWCNet](also see https://github.com/NVlabs/PWC-Net/tree/master/PyTorch/external_packages/correlation-pytorch-master):
+Generate the Correlation package required by [PWCNet](https://github.com/NVlabs/PWC-Net/tree/master/PyTorch/external_packages/correlation-pytorch-master):
     
     $ cd ../PWCNet/correlation_package_pytorch1_0
     $ ./build.sh
