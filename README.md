@@ -26,7 +26,7 @@ We develop a depth-aware flow projection layer to synthesize intermediate flows 
 Our method achieves state-of-the-art performance on the Middlebury dataset.
  
 ![teaser](https://drive.google.com/uc?export=view&id=1v57RMm9x5vM36mCgPy5hresXDZWtw3Vs |width=200)
-![teaser](<img src="https://github.com/favicon.ico" width="48">)
+<img src="https://github.com/favicon.ico" width="48">
 
 
 ### Citation
