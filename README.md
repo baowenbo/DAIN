@@ -36,6 +36,7 @@ If you find the code and datasets useful in your research, please cite:
     }
     
 ### Requirements and Dependencies
+- Ubuntu (we test with Ubuntu = 16.04.5 LTS)
 - Python (we test with Python = 3.6.8 in Anaconda3 = 4.1.1)
 - Cuda & Cudnn (we test with Cuda = 9.0 and Cudnn = 7.0)
 - PyTorch (the customized depth-aware flow projection and other layers require ATen API in PyTorch = 1.0.0)
@@ -103,6 +104,13 @@ or
 for x8 and x10 slow-motion respectively. Or, if you would like to have x100 slow-motion for a little fun.
     
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py --netName DAIN_slowmotion --time_step 0.01
+
+You may also want to create gif animations as follows:
+    
+    $ cd MiddleBurySet/other-result-author/[random number]/Beanbags
+    $ convert -delay 0 *.png -loop 0 Beanbags.gif
+
+Have fun and enjoy yourself
 
 ### Training New Models
 Download the Vimeo90K triplet dataset for video frame interpolation task, also see [here](https://github.com/anchen1011/toflow/blob/master/download_dataset.sh) by [Xue et al., IJCV19](https://arxiv.org/abs/1711.09078).
