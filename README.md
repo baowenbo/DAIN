@@ -25,7 +25,7 @@ We propose the **D**epth-**A**ware video frame **IN**terpolation (**DAIN**) mode
 We develop a depth-aware flow projection layer to synthesize intermediate flows that preferably sample closer objects than farther ones.
 Our method achieves state-of-the-art performance on the Middlebury dataset.
  
-![teaser](https://drive.google.com/uc?export=view&id=1v57RMm9x5vM36mCgPy5hresXDZWtw3Vs | width = 100}
+![teaser](https://drive.google.com/uc?export=view&id=1v57RMm9x5vM36mCgPy5hresXDZWtw3Vs}
 
 ### Citation
 If you find the code and datasets useful in your research, please cite:
