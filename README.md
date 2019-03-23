@@ -25,7 +25,7 @@ We propose the **D**epth-**A**ware video frame **IN**terpolation (**DAIN**) mode
 We develop a depth-aware flow projection layer to synthesize intermediate flows that preferably sample closer objects than farther ones.
 Our method achieves state-of-the-art performance on the Middlebury dataset.
 
-![teaser](https://drive.google.com/uc?export=view&id=1v57RMm9x5vM36mCgPy5hresXDZWtw3Vs)
+![teaser](https://drive.google.com/uc?export=view&id=1v57RMm9x5vM36mCgPy5hresXDZWtw3Vs =250x250)
 
 ### Citation
 If you find the code and datasets useful in your research, please cite:
@@ -110,7 +110,7 @@ for x8 and x10 slow-motion respectively. Or, if you would like to have x100 slow
 You may also want to create gif animations as follows:
     
     $ cd MiddleBurySet/other-result-author/[random number]/Beanbags
-    $ convert -delay 2 *.png -loop 0 Beanbags.gif //2*10ms delay 
+    $ convert -delay 1 *.png -loop 0 Beanbags.gif //1*10ms delay 
 
 Have fun and enjoy yourself! 
 
