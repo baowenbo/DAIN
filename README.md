@@ -108,9 +108,9 @@ for x8 and x10 slow-motion respectively. Or, if you would like to have x100 slow
 You may also want to create gif animations as follows:
     
     $ cd MiddleBurySet/other-result-author/[random number]/Beanbags
-    $ convert -delay 0 *.png -loop 0 Beanbags.gif
+    $ convert -delay 2 *.png -loop 0 Beanbags.gif //2*10ms delay 
 
-Have fun and enjoy yourself
+Have fun and enjoy yourself! 
 
 ### Training New Models
 Download the Vimeo90K triplet dataset for video frame interpolation task, also see [here](https://github.com/anchen1011/toflow/blob/master/download_dataset.sh) by [Xue et al., IJCV19](https://arxiv.org/abs/1711.09078).
