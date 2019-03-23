@@ -40,7 +40,7 @@ parser.add_argument('--filter_size', '-f', type=int, default=4, help = 'the size
 # parser.add_argument('--rectify_lr', type=float, default=0.001, help  = 'the learning rate for rectify/refine subnetworks (default: 0.001)')
 
 parser.add_argument('--save_which', '-s', type=int, default=1, choices=[0,1], help='choose which result to save: 0 ==> interpolated, 1==> rectified')
-parser.add_argument('--time_step',  type=float, default=0.5, choices=[0.5,0.25,0.2,0.125,0.1], help='choose the time steps')
+parser.add_argument('--time_step',  type=float, default=0.5, help='choose the time steps')
 # parser.add_argument('--flow_lr_coe', type = float, default=0.01, help = 'relative learning rate w.r.t basic learning rate (default: 0.01)')
 # parser.add_argument('--occ_lr_coe', type = float, default=1.0, help = 'relative learning rate w.r.t basic learning rate (default: 1.0)')
 # parser.add_argument('--filter_lr_coe', type = float, default=1.0, help = 'relative learning rate w.r.t basic learning rate (default: 1.0)')
