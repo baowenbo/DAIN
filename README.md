@@ -54,14 +54,14 @@ Walking
 https://drive.google.com/open?id=1CgCLmVC_WTVTAcA_IdWbLqR8MS18zHoa
 -->
 
-<p float="left">
+<p float="middle">
 <img src="https://drive.google.com/uc?export=view&id=1YWAyAJ3T48fMFv2K8j8wIVcmQm39cRof" width="200"/>
 <img src="https://drive.google.com/uc?export=view&id=1CgCLmVC_WTVTAcA_IdWbLqR8MS18zHoa" width="200"/>
 <img src="https://drive.google.com/uc?export=view&id=1pWHtyBSZsOTC7NTVdHTrv1W-dxa95BLo" width="200"/>
 <img src="https://drive.google.com/uc?export=view&id=170vdxANGoNKO5_8MYOuiDvoIXzucv7HW" width="200"/>
 </p>
 
-<p float="left">
+<p float="middle">
 <img src="https://drive.google.com/uc?export=view&id=1sJLwdQdL6JYXSQo_Bev0aQMleWacxCsN" width="200"/>
 <img src="https://drive.google.com/uc?export=view&id=1jGj3UdGppoJO02Of8ZaNXqDH4fnXuQ8O" width="200"/>
 <img src="https://drive.google.com/uc?export=view&id=1v57RMm9x5vM36mCgPy5hresXDZWtw3Vs" width="200"/>
@@ -69,7 +69,7 @@ https://drive.google.com/open?id=1CgCLmVC_WTVTAcA_IdWbLqR8MS18zHoa
 </p>
 
 
-<p float="left">
+<p float="middle">
 <img src="https://drive.google.com/uc?export=view&id=1piPnEexuHaiAr4ZzWSAxGi1u1Xo_6vPp" width="200"/>
 <img src="https://drive.google.com/uc?export=view&id=1korbXsGpSgJn7THBHkLRVrJMtCt5YZPB" width="200"/>
 <img src="https://drive.google.com/uc?export=view&id=1_4kVlhvrmCv54aXi7vZMk3-FtRQF7s0s" width="200"/>
