@@ -7,6 +7,7 @@
 model_weights/*
 MiddleBurySet/*
 
+.nfs*
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template

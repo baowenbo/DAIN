@@ -13,7 +13,7 @@ import Resblock
 import MegaDepth
 import time
 
-class DAIN(torch.nn.Module):
+class DAIN_slowmotion(torch.nn.Module):
     def __init__(self,
                  channel = 3,
                  filter_size = 4,
@@ -21,15 +21,14 @@ class DAIN(torch.nn.Module):
                  training=True):
 
         # base class initialization
-        super(DAIN, self).__init__()
+        super(DAIN_slowmotion, self).__init__()
         
         self.filter_size = filter_size
         self.training = training
-        self.timestep = timestep
-        assert (timestep == 0.5) # TODO: or else the WeigtedFlowProjection should also be revised... Really Tedious work.
+        self.timestep = timestep        
         self.numFrames =int(1.0/timestep) - 1
 
-        i=0
+        i = 0
         self.initScaleNets_filter,self.initScaleNets_filter1,self.initScaleNets_filter2 = \
             self.get_MonoNet5(channel if i == 0 else channel + filter_size * filter_size, filter_size * filter_size, "filter")
 
@@ -162,18 +161,26 @@ class DAIN(torch.nn.Module):
         '''
             STEP 3.4: perform the frame interpolation process 
         '''
-        cur_offset_output = [cur_offset_outputs[0][0], cur_offset_outputs[1][0]]
-        ctx0,ctx2 = self.FilterInterpolate_ctx(cur_ctx_output[0],cur_ctx_output[1],
-                                                   cur_offset_output,cur_filter_output)
+        cur_output_rectified = []
+        cur_output = []
+        
+        for temp_0,temp_1, timeoffset in zip(cur_offset_outputs[0], cur_offset_outputs[1], time_offsets):
+            cur_offset_output = [temp_0,temp_1] #[cur_offset_outputs[0][0], cur_offset_outputs[1][0]]
+            ctx0,ctx2 = self.FilterInterpolate_ctx(cur_ctx_output[0],cur_ctx_output[1],
+                               cur_offset_output,cur_filter_output, timeoffset)
 
-        cur_output,ref0,ref2 = self.FilterInterpolate(cur_input_0, cur_input_2,cur_offset_output,cur_filter_output,self.filter_size**2)
 
-        rectify_input = torch.cat((cur_output,ref0,ref2,
-                                    cur_offset_output[0],cur_offset_output[1],
-                                    cur_filter_output[0],cur_filter_output[1],
-                                    ctx0,ctx2
-        ),dim =1)
-        cur_output_rectified = self.rectifyNet(rectify_input) + cur_output
+            cur_output_temp ,ref0,ref2 = self.FilterInterpolate(cur_input_0, cur_input_2,cur_offset_output,
+                                          cur_filter_output,self.filter_size**2, timeoffset)
+            cur_output.append(cur_output_temp)
+
+            rectify_input = torch.cat((cur_output_temp,ref0,ref2,
+                                        cur_offset_output[0],cur_offset_output[1],
+                                        cur_filter_output[0],cur_filter_output[1],
+                                        ctx0,ctx2
+                                        ),dim =1)
+            cur_output_rectified_temp = self.rectifyNet(rectify_input) + cur_output_temp
+            cur_output_rectified.append(cur_output_rectified_temp)
 
         '''
             STEP 3.5: for training phase, we collect the variables to be penalized.
@@ -301,7 +308,7 @@ class DAIN(torch.nn.Module):
 
     '''keep this function'''
     @staticmethod
-    def FilterInterpolate_ctx(ctx0,ctx2,offset,filter):
+    def FilterInterpolate_ctx(ctx0,ctx2,offset,filter, timeoffset):
         ##TODO: which way should I choose
 
         ctx0_offset = FilterInterpolationModule()(ctx0,offset[0].detach(),filter[0].detach())
@@ -314,10 +321,18 @@ class DAIN(torch.nn.Module):
         # return ctx0_offset, ctx2_offset
     '''Keep this function'''
     @staticmethod
-    def FilterInterpolate(ref0, ref2, offset, filter,filter_size2):
+    def FilterInterpolate(ref0, ref2, offset, filter,filter_size2, time_offset):
         ref0_offset = FilterInterpolationModule()(ref0, offset[0],filter[0])
         ref2_offset = FilterInterpolationModule()(ref2, offset[1],filter[1])
-        return ref0_offset/2.0 + ref2_offset/2.0, ref0_offset,ref2_offset
+
+        # occlusion0, occlusion2 = torch.split(occlusion, 1, dim=1)
+        # print((occlusion0[0,0,1,1] + occlusion2[0,0,1,1]))
+        # output = (occlusion0 * ref0_offset + occlusion2 * ref2_offset) / (occlusion0 + occlusion2)
+        # output = * ref0_offset + occlusion[1] * ref2_offset
+        # automatically broadcasting the occlusion to the three channels of and image.
+        # return output
+        # return ref0_offset/2.0 + ref2_offset/2.0, ref0_offset,ref2_offset
+        return ref0_offset*(1.0 - time_offset) + ref2_offset*(time_offset), ref0_offset, ref2_offset
 
     '''keep this function'''
     @staticmethod
