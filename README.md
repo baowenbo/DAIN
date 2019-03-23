@@ -145,19 +145,19 @@ The interpolated results are under `MiddleBurySet/other-result-author/[random nu
 
 ### Slow-motion Generation
 Our model is fully capable of generating slow-motion effect with minor modification on the network architecture.
-Run the following code with to generate x4 slow-motion effect:
+Run the following code by specifying `time_step = 0.25` to generate x4 slow-motion effect:
 
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py --netName DAIN_slowmotion --time_step 0.25
 
-or 
+or set `time_step` to `0.125` or `0.1` as follows 
 
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py --netName DAIN_slowmotion --time_step 0.125
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py --netName DAIN_slowmotion --time_step 0.1
-for x8 and x10 slow-motion respectively. Or, if you would like to have x100 slow-motion for a little fun.
+to generate x8 and x10 slow-motion respectively. Or if you would like to have x100 slow-motion for a little fun.
     
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py --netName DAIN_slowmotion --time_step 0.01
 
-You may also want to create gif animations as follows:
+You may also want to create gif animations by:
     
     $ cd MiddleBurySet/other-result-author/[random number]/Beanbags
     $ convert -delay 1 *.png -loop 0 Beanbags.gif //1*10ms delay 
