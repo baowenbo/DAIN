@@ -17,7 +17,7 @@ IEEE Conference on Computer Vision and Pattern Recognition, Long Beach, CVPR 201
 1. [Requirements and Dependencies](#requirements-and-dependencies)
 1. [Installation](#installation)
 1. [Test Pre-trained Models](#test-pre-trained-models)
-1. [Generate Slow-motion Videos](#generate-slow-motion-videos)
+1. [Slow-motion Generation](#slow-motion-generation)
 1. [Training New Models](#training-new-models)
 
 ### Introduction
@@ -90,10 +90,10 @@ We are good to go by:
 
 The interpolated results are under `MiddleBurySet/other-result-author/[random numer]/`.
 
-### Generate Slow-motion Videos
+### Slow-motion Generation
 Run the following code with the multiframe interpolation network architecture:
 
-    $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py 
+    $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py --netName DAIN_slowmotion
 
 ### Training New Models
 Download the Vimeo90K triplet dataset for video frame interpolation task, also see [here](https://github.com/anchen1011/toflow/blob/master/download_dataset.sh) by [Xue et al., IJCV19](https://arxiv.org/abs/1711.09078).
