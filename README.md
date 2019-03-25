@@ -145,8 +145,8 @@ We are good to go by:
 The interpolated results are under `MiddleBurySet/other-result-author/[random numer]/`.
 
 ### Results
-Our results on the UCF101, Vimeo90K, and Middlebury (*eval* and *other*) obtains state-of-the-art performance.
-Dowload our interpolated results by:
+Our DAIN model achieves the state-of-the-art performance on the UCF101, Vimeo90K, and Middlebury (*eval* and *other*).
+Dowload our interpolated results with:
     
     $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/UCF101_DAIN.zip
     $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/Vimeo90K_interp_DAIN.zip
