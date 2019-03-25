@@ -17,6 +17,7 @@ IEEE Conference on Computer Vision and Pattern Recognition, Long Beach, CVPR 201
 1. [Requirements and Dependencies](#requirements-and-dependencies)
 1. [Installation](#installation)
 1. [Test Pre-trained Models](#test-pre-trained-models)
+1. [Results](#Results)
 1. [Slow-motion Generation](#slow-motion-generation)
 1. [Training New Models](#training-new-models)
 
@@ -143,6 +144,16 @@ We are good to go by:
 
 The interpolated results are under `MiddleBurySet/other-result-author/[random numer]/`.
 
+### Results
+Our results on the UCF101, Vimeo90K, and Middlebury (*eval* and *other*) obtains state-of-the-art performance.
+Dowload our interpolated results by:
+    
+    $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/UCF101_DAIN.zip
+    $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/Vimeo90K_interp_DAIN.zip
+    $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/Middlebury_eval_DAIN.zip
+    $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/Middlebury_other_DAIN.zip
+    
+    
 ### Slow-motion Generation
 Our model is fully capable of generating slow-motion effect with minor modification on the network architecture.
 Run the following code by specifying `time_step = 0.25` to generate x4 slow-motion effect:
