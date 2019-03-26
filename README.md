@@ -1,5 +1,5 @@
 # DAIN (Depth-Aware Video Frame Interpolation)
-[Project](https://sites.google.com/view/wenbobao/dain)|[Paper]()
+[Project](https://sites.google.com/view/wenbobao/dain) | [Paper]()
 
 [Wenbo Bao](https://sites.google.com/view/wenbobao/home)
 [Wei-Sheng Lai](http://graduatestudents.ucmerced.edu/wlai24/), 
