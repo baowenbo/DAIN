@@ -142,7 +142,7 @@ We are good to go by:
 
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury.py
 
-The interpolated results are under `MiddleBurySet/other-result-author/[random numer]/`.
+The interpolated results are under `MiddleBurySet/other-result-author/[random number]/`, where the `random number` is used to distinguish different runnings. 
 
 ### Results
 Our DAIN model achieves the state-of-the-art performance on the UCF101, Vimeo90K, and Middlebury ([*eval*](http://vision.middlebury.edu/flow/eval/results/results-n1.php) and *other*).
