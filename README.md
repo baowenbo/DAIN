@@ -19,7 +19,7 @@ IEEE Conference on Computer Vision and Pattern Recognition, Long Beach, CVPR 201
 1. [Test Pre-trained Models](#test-pre-trained-models)
 1. [Results](#Results)
 1. [Slow-motion Generation](#slow-motion-generation)
-1. [Training New Models](#training-new-models)
+<!--1. [Training New Models](#training-new-models) -->
 
 ### Introduction
 We propose the **D**epth-**A**ware video frame **IN**terpolation (**DAIN**) model to explicitly detect the occlusion by exploring the depth cue.
@@ -175,6 +175,7 @@ You may also want to create gif animations by:
 
 Have fun and enjoy yourself! 
 
+<!--
 ### Training New Models
 Download the Vimeo90K triplet dataset for video frame interpolation task, also see [here](https://github.com/anchen1011/toflow/blob/master/download_dataset.sh) by [Xue et al., IJCV19](https://arxiv.org/abs/1711.09078).
     
@@ -202,7 +203,7 @@ Replace the pre-trained `model_weights/best.pth` model with the newly trained `m
 Then test the new model by executing: 
 
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury.py
-
+-->
 
 ### Contact
 [Wenbo Bao](mailto:bwb0813@gmail.com); [Wei-Sheng (Jason) Lai](mailto:phoenix104104@gmail.com)
