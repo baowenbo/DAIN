@@ -209,6 +209,6 @@ Then test the new model by executing:
 [Wenbo Bao](mailto:bwb0813@gmail.com); [Wei-Sheng (Jason) Lai](mailto:phoenix104104@gmail.com)
 
 ### License
-See MIT [License](https://github.com/baowenbo/DAIN/blob/master/LICENSE)
+See [MIT License](https://github.com/baowenbo/DAIN/blob/master/LICENSE)
 
     
