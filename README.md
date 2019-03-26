@@ -196,7 +196,7 @@ Run the training script:
 
     $ CUDA_VISIBLE_DEVICES=0 python main.py
     
-The optimized models will be saved in the `model_weights/[random number]` directory.
+The optimized models will be saved to the `model_weights/[random number]` directory, where [random number] is generated for different runs.
 
 Replace the pre-trained `model_weights/best.pth` model with the newly trained `model_weights/[random number]/best.pth` model.
 Then test the new model by executing: 
