@@ -16,8 +16,8 @@ IEEE Conference on Computer Vision and Pattern Recognition, Long Beach, CVPR 201
 1. [Citation](#citation)
 1. [Requirements and Dependencies](#requirements-and-dependencies)
 1. [Installation](#installation)
-1. [Test Pre-trained Models](#test-pre-trained-models)
-1. [Results](#Results)
+1. [Testing Pre-trained Models](#testing-pre-trained-models)
+1. [Downloading Results](#downloading-results)
 1. [Slow-motion Generation](#slow-motion-generation)
 <!--1. [Training New Models](#training-new-models) -->
 
@@ -117,7 +117,7 @@ Generate the Correlation package required by [PWCNet](https://github.com/NVlabs/
     $ ./build.sh
 
 
-### Test Pre-trained Models
+### Testing Pre-trained Models
 Make model weights dir and Middlebury dataset dir:
 
     $ cd DAIN
@@ -144,7 +144,7 @@ We are good to go by:
 
 The interpolated results are under `MiddleBurySet/other-result-author/[random number]/`, where the `random number` is used to distinguish different runnings. 
 
-### Results
+### Downloading Results
 Our DAIN model achieves the state-of-the-art performance on the UCF101, Vimeo90K, and Middlebury ([*eval*](http://vision.middlebury.edu/flow/eval/results/results-n1.php) and *other*).
 Dowload our interpolated results with:
     
