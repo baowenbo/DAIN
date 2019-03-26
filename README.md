@@ -1,5 +1,5 @@
 # DAIN (Depth-Aware Video Frame Interpolation)
-[Project](https://sites.google.com/view/wenbobao/dain) &#124 [Paper]()
+[Project](https://sites.google.com/view/wenbobao/dain) **|** [Paper]()
 
 [Wenbo Bao](https://sites.google.com/view/wenbobao/home)
 [Wei-Sheng Lai](http://graduatestudents.ucmerced.edu/wlai24/), 
@@ -210,5 +210,3 @@ Then test the new model by executing:
 
 ### License
 See [MIT License](https://github.com/baowenbo/DAIN/blob/master/LICENSE)
-
-    
