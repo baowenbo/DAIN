@@ -27,6 +27,7 @@ We develop a depth-aware flow projection layer to synthesize intermediate flows 
 Our method achieves state-of-the-art performance on the Middlebury dataset. 
 We provide videos [here](https://www.youtube.com/watch?v=-f8f0igQi5I&t=5s).
 
+![teaser](http://vllab1.ucmerced.edu/~wenbobao/DAIN/burnout_compare2.mp4)
 
 <!--哈哈我是注释，不会在浏览器中显示。
 Beanbags
