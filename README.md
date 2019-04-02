@@ -37,7 +37,7 @@ We provide videos [here](https://www.youtube.com/watch?v=-f8f0igQi5I&t=5s).
 <!--![teaser](https://youtu.be/icJ0WbPsE20)-->
 <!--[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/T-D1KVIuvjA)-->
 
-<!--![teaser](http://vllab1.ucmerced.edu/~wenbobao/DAIN/burnout_compare2.mp4)-->
+![teaser](http://vllab1.ucmerced.edu/~wenbobao/DAIN/kart-turn_compare.gif)
 <!--<video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
       <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
       <source id="webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">
