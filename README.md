@@ -27,7 +27,19 @@ We develop a depth-aware flow projection layer to synthesize intermediate flows 
 Our method achieves state-of-the-art performance on the Middlebury dataset. 
 We provide videos [here](https://www.youtube.com/watch?v=-f8f0igQi5I&t=5s).
 
+<!--![teaser](http://vllab.ucmerced.edu/wlai24/LapSRN/images/emma_text.gif)-->
+<!--[![teaser](https://img.youtube.com/vi/icJ0WbPsE20/maxresdefault.jpg)](https://youtu.be/icJ0WbPsE20)-->
+![teaser](https://youtu.be/icJ0WbPsE20)
+<!--[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/T-D1KVIuvjA)-->
+
 <!--![teaser](http://vllab1.ucmerced.edu/~wenbobao/DAIN/burnout_compare2.mp4)-->
+<!--<video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
+      <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
+      <source id="webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">
+      <source id="ogv" src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg">
+      <p>Your user agent does not support the HTML5 Video element.</p>
+</video> 
+-->
 
 <!--哈哈我是注释，不会在浏览器中显示。
 Beanbags
