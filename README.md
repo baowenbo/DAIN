@@ -29,7 +29,8 @@ We provide videos [here](https://www.youtube.com/watch?v=-f8f0igQi5I&t=5s).
 
 <!--![teaser](http://vllab.ucmerced.edu/wlai24/LapSRN/images/emma_text.gif)-->
 <!--[![teaser](https://img.youtube.com/vi/icJ0WbPsE20/maxresdefault.jpg)](https://youtu.be/icJ0WbPsE20)-->
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)
+<!--[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)-->
+![teaser](http://vllab.ucmerced.edu/wlai24/LapSRN/images/emma_text.gif)
 
 ![teaser](https://youtu.be/icJ0WbPsE20)
 <!--[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/T-D1KVIuvjA)-->
