@@ -1,7 +1,7 @@
-# DAIN
-Depth-Aware Video Frame Interpolation
+# DAIN (Depth-Aware Video Frame Interpolation)
+[Project](https://sites.google.com/view/wenbobao/dain) **|** [Paper](http://arxiv.org/abs/1904.00830)
 
-[Wenbo Bao](https://sites.google.com/view/wenbobao/home)
+[Wenbo Bao](https://sites.google.com/view/wenbobao/home),
 [Wei-Sheng Lai](http://graduatestudents.ucmerced.edu/wlai24/), 
 [Chao Ma](https://sites.google.com/site/chaoma99/),
 Xiaoyun Zhang, 
@@ -16,14 +16,22 @@ IEEE Conference on Computer Vision and Pattern Recognition, Long Beach, CVPR 201
 1. [Citation](#citation)
 1. [Requirements and Dependencies](#requirements-and-dependencies)
 1. [Installation](#installation)
-1. [Test Pre-trained Models](#test-pre-trained-models)
+1. [Testing Pre-trained Models](#testing-pre-trained-models)
+1. [Downloading Results](#downloading-results)
 1. [Slow-motion Generation](#slow-motion-generation)
-1. [Training New Models](#training-new-models)
+<!--1. [Training New Models](#training-new-models) -->
 
 ### Introduction
 We propose the **D**epth-**A**ware video frame **IN**terpolation (**DAIN**) model to explicitly detect the occlusion by exploring the depth cue.
 We develop a depth-aware flow projection layer to synthesize intermediate flows that preferably sample closer objects than farther ones.
-Our method achieves state-of-the-art performance on the Middlebury dataset.
+Our method achieves state-of-the-art performance on the Middlebury dataset. 
+We provide videos [here](https://www.youtube.com/watch?v=-f8f0igQi5I&t=5s).
+
+<!--![teaser](http://vllab.ucmerced.edu/wlai24/LapSRN/images/emma_text.gif)-->
+
+<!--[![teaser](https://img.youtube.com/vi/icJ0WbPsE20/0.jpg)](https://www.youtube.com/watch?v=icJ0WbPsE20&feature=youtu.be)
+<!--<iframe width="560" height="315" src="https://www.youtube.com/embed/icJ0WbPsE20" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+![teaser](http://vllab1.ucmerced.edu/~wenbobao/DAIN/kart-turn_compare.gif)
 
 
 <!--哈哈我是注释，不会在浏览器中显示。
@@ -53,20 +61,26 @@ Walking
 https://drive.google.com/open?id=1CgCLmVC_WTVTAcA_IdWbLqR8MS18zHoa
 -->
 
-<p float="left">
-<img src="https://drive.google.com/uc?export=view&id=1YWAyAJ3T48fMFv2K8j8wIVcmQm39cRof" width="180"/>
-<img src="https://drive.google.com/uc?export=view&id=1CgCLmVC_WTVTAcA_IdWbLqR8MS18zHoa" width="180"/>
-<img src="https://drive.google.com/uc?export=view&id=1pWHtyBSZsOTC7NTVdHTrv1W-dxa95BLo" width="180"/>
-<img src="https://drive.google.com/uc?export=view&id=170vdxANGoNKO5_8MYOuiDvoIXzucv7HW" width="180"/>
+<p float="middle">
+<img src="https://drive.google.com/uc?export=view&id=1YWAyAJ3T48fMFv2K8j8wIVcmQm39cRof" width="200"/>
+<img src="https://drive.google.com/uc?export=view&id=1CgCLmVC_WTVTAcA_IdWbLqR8MS18zHoa" width="200"/>
+<img src="https://drive.google.com/uc?export=view&id=1pWHtyBSZsOTC7NTVdHTrv1W-dxa95BLo" width="200"/>
+<img src="https://drive.google.com/uc?export=view&id=170vdxANGoNKO5_8MYOuiDvoIXzucv7HW" width="200"/>
 </p>
 
-<p float="left">
-<img src="https://drive.google.com/uc?export=view&id=1sJLwdQdL6JYXSQo_Bev0aQMleWacxCsN" width="180"/>
-<img src="https://drive.google.com/uc?export=view&id=1jGj3UdGppoJO02Of8ZaNXqDH4fnXuQ8O" width="180"/>
-<img src="https://drive.google.com/uc?export=view&id=1v57RMm9x5vM36mCgPy5hresXDZWtw3Vs" width="180"/>
-<img src="https://drive.google.com/uc?export=view&id=1LMwSU0PrG4_GaDjWRI2v9hvWpYwzRKca" width="180"/>
+<p float="middle">
+<img src="https://drive.google.com/uc?export=view&id=1sJLwdQdL6JYXSQo_Bev0aQMleWacxCsN" width="200"/>
+<img src="https://drive.google.com/uc?export=view&id=1jGj3UdGppoJO02Of8ZaNXqDH4fnXuQ8O" width="200"/>
+<img src="https://drive.google.com/uc?export=view&id=1v57RMm9x5vM36mCgPy5hresXDZWtw3Vs" width="200"/>
+<img src="https://drive.google.com/uc?export=view&id=1LMwSU0PrG4_GaDjWRI2v9hvWpYwzRKca" width="200"/>
 </p>
 
+<p float="middle">
+<img src="https://drive.google.com/uc?export=view&id=1piPnEexuHaiAr4ZzWSAxGi1u1Xo_6vPp" width="200"/>
+<img src="https://drive.google.com/uc?export=view&id=1korbXsGpSgJn7THBHkLRVrJMtCt5YZPB" width="200"/>
+<img src="https://drive.google.com/uc?export=view&id=1_4kVlhvrmCv54aXi7vZMk3-FtRQF7s0s" width="200"/>
+<img src="https://drive.google.com/uc?export=view&id=14n7xvb9hjTKqfcr7ZpEFyfMvx6E8NhD_" width="200"/>
+</p>
 
 
 ### Citation
@@ -85,14 +99,14 @@ If you find the code and datasets useful in your research, please cite:
 - Cuda & Cudnn (We test with Cuda = 9.0 and Cudnn = 7.0)
 - PyTorch (The customized depth-aware flow projection and other layers require ATen API in PyTorch = 1.0.0)
 - GCC (Compiling PyTorch 1.0.0 extension files (.c/.cu) requires gcc = 4.9.1 and nvcc = 9.0 compilers)
-- NVIDIA GPU (We use Titan X (Pascal) with compute = 6.1, but we support compute_50/52/60/61 devices, check [this](https://github.com/baowenbo/DAIN/blob/master/my_package/DepthFlowProjection/setup.py))
+- NVIDIA GPU (We use Titan X (Pascal) with compute = 6.1, but we support compute_50/52/60/61 devices, should you have devices with higher compute capability, please revise [this](https://github.com/baowenbo/DAIN/blob/master/my_package/DepthFlowProjection/setup.py))
 
 ### Installation
 Download repository:
 
     $ git clone https://github.com/baowenbo/DAIN.git
 
-Before building Pytorch extensions, be sure you have `pytorch version >= 1.0.0`:
+Before building Pytorch extensions, be sure you have `pytorch >= 1.0.0`:
     
     $ python -c "import torch; print(torch.__version__)"
     
@@ -108,7 +122,7 @@ Generate the Correlation package required by [PWCNet](https://github.com/NVlabs/
     $ ./build.sh
 
 
-### Test Pre-trained Models
+### Testing Pre-trained Models
 Make model weights dir and Middlebury dataset dir:
 
     $ cd DAIN
@@ -133,29 +147,40 @@ We are good to go by:
 
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury.py
 
-The interpolated results are under `MiddleBurySet/other-result-author/[random numer]/`.
+The interpolated results are under `MiddleBurySet/other-result-author/[random number]/`, where the `random number` is used to distinguish different runnings. 
 
+### Downloading Results
+Our DAIN model achieves the state-of-the-art performance on the UCF101, Vimeo90K, and Middlebury ([*eval*](http://vision.middlebury.edu/flow/eval/results/results-n1.php) and *other*).
+Dowload our interpolated results with:
+    
+    $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/UCF101_DAIN.zip
+    $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/Vimeo90K_interp_DAIN.zip
+    $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/Middlebury_eval_DAIN.zip
+    $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/Middlebury_other_DAIN.zip
+    
+    
 ### Slow-motion Generation
 Our model is fully capable of generating slow-motion effect with minor modification on the network architecture.
-Run the following code with to generate x4 slow-motion effect:
+Run the following code by specifying `time_step = 0.25` to generate x4 slow-motion effect:
 
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py --netName DAIN_slowmotion --time_step 0.25
 
-or 
+or set `time_step` to `0.125` or `0.1` as follows 
 
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py --netName DAIN_slowmotion --time_step 0.125
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py --netName DAIN_slowmotion --time_step 0.1
-for x8 and x10 slow-motion respectively. Or, if you would like to have x100 slow-motion for a little fun.
+to generate x8 and x10 slow-motion respectively. Or if you would like to have x100 slow-motion for a little fun.
     
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury_slowmotion.py --netName DAIN_slowmotion --time_step 0.01
 
-You may also want to create gif animations as follows:
+You may also want to create gif animations by:
     
     $ cd MiddleBurySet/other-result-author/[random number]/Beanbags
     $ convert -delay 1 *.png -loop 0 Beanbags.gif //1*10ms delay 
 
 Have fun and enjoy yourself! 
 
+<!--
 ### Training New Models
 Download the Vimeo90K triplet dataset for video frame interpolation task, also see [here](https://github.com/anchen1011/toflow/blob/master/download_dataset.sh) by [Xue et al., IJCV19](https://arxiv.org/abs/1711.09078).
     
@@ -177,18 +202,16 @@ Run the training script:
 
     $ CUDA_VISIBLE_DEVICES=0 python main.py
     
-The optimized models will be saved in the `model_weights/[random number]` directory.
+The optimized models will be saved to the `model_weights/[random number]` directory, where [random number] is generated for different runs.
 
 Replace the pre-trained `model_weights/best.pth` model with the newly trained `model_weights/[random number]/best.pth` model.
 Then test the new model by executing: 
 
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury.py
-
+-->
 
 ### Contact
 [Wenbo Bao](mailto:bwb0813@gmail.com); [Wei-Sheng (Jason) Lai](mailto:phoenix104104@gmail.com)
 
 ### License
-See MIT [License](https://github.com/baowenbo/DAIN/blob/master/LICENSE)
-
-    
+See [MIT License](https://github.com/baowenbo/DAIN/blob/master/LICENSE)
