@@ -25,7 +25,7 @@ class HGModel(BaseModel):
             # model.load_state_dict(model_parameters)
             # self.netG = model.cuda()
             self.netG    = model
-            print("No weights loaded for Hourglass Network")
+            # print("No weights loaded for Hourglass Network")
         else:
             pretrained_dict = torch.load(pretrained)
 
