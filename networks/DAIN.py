@@ -48,7 +48,7 @@ class DAIN(torch.nn.Module):
 
         #extract depth information
         if self.training:
-            self.depthNet=MegaDepth.__dict__['HourGlass']("MegaDepth/checkpoints/test_local/best_generalization_net_G.pth")
+            self.depthNet=MegaDepth.__dict__['HourGlass']("MegaDepth/checkpoints/best_generalization_net_G.pth")
         else:
             self.depthNet=MegaDepth.__dict__['HourGlass']()
 
