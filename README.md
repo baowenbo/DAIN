@@ -19,7 +19,7 @@ IEEE Conference on Computer Vision and Pattern Recognition, Long Beach, CVPR 201
 1. [Testing Pre-trained Models](#testing-pre-trained-models)
 1. [Downloading Results](#downloading-results)
 1. [Slow-motion Generation](#slow-motion-generation)
-<!--1. [Training New Models](#training-new-models) -->
+1. [Training New Models](#training-new-models) 
 
 ### Introduction
 We propose the **D**epth-**A**ware video frame **IN**terpolation (**DAIN**) model to explicitly detect the occlusion by exploring the depth cue.
@@ -209,6 +209,7 @@ Then test the new model by executing:
 
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury.py
 -->
+### Training New Models
 
 ### Contact
 [Wenbo Bao](mailto:bwb0813@gmail.com); [Wei-Sheng (Jason) Lai](mailto:phoenix104104@gmail.com)
