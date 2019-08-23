@@ -180,7 +180,7 @@ You may also want to create gif animations by:
 
 Have fun and enjoy yourself! 
 
-<!--
+
 ### Training New Models
 Download the Vimeo90K triplet dataset for video frame interpolation task, also see [here](https://github.com/anchen1011/toflow/blob/master/download_dataset.sh) by [Xue et al., IJCV19](https://arxiv.org/abs/1711.09078).
     
@@ -208,8 +208,6 @@ Replace the pre-trained `model_weights/best.pth` model with the newly trained `m
 Then test the new model by executing: 
 
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury.py
--->
-### Training New Models
 
 ### Contact
 [Wenbo Bao](mailto:bwb0813@gmail.com); [Wei-Sheng (Jason) Lai](mailto:phoenix104104@gmail.com)
