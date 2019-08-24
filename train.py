@@ -138,7 +138,7 @@ def train():
 
         for i, (X0_half,X1_half, y_half) in enumerate(train_loader):
 
-            if i >= int(len(train_set) / args.batch_size ):
+            if i >= 10 : #int(len(train_set) / args.batch_size ):
                 #(0 if t == 0 else EPOCH):#
                 break
 
@@ -201,7 +201,7 @@ def train():
 
                 diffs, offsets,filters,occlusions = model(torch.stack((X0,y,X1),dim = 0))
 
-                pixel_loss, offset_loss,sym_loss = part_loss(diffs, offsets, occlusions, [X0,X1],epsilon=args.epsilon, use_negPSNR=args.use_negPSNR)
+                pixel_loss, offset_loss,sym_loss = part_loss(diffs, offsets, occlusions, [X0,X1],epsilon=args.epsilon)
 
                 val_total_loss = sum(x * y for x, y in zip(args.alpha, pixel_loss))
 
