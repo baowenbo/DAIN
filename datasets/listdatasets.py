@@ -15,8 +15,8 @@ def Vimeo_90K_loader(root, im_path, input_frame_size = (3, 256, 448), output_fra
         path_pre1 = os.path.join(root,  "im2.png")
         path_mid = os.path.join(root,  "im3.png")
     else:
-        path_pre2 = os.path.join(root,  "im1.png")
-        path_pre1 = os.path.join(root,  "im2.png")
+        path_pre1 = os.path.join(root,  "im1.png")
+        path_pre2 = os.path.join(root,  "im2.png")
         path_mid = os.path.join(root,  "im3.png")
 
     im_pre2 = imread(path_pre2)
