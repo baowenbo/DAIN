@@ -12,12 +12,12 @@ def Vimeo_90K_loader(root, im_path, input_frame_size = (3, 256, 448), output_fra
 
     if data_aug and random.randint(0, 1):
         path_pre2 = os.path.join(root,  "im1.png")
-        path_pre1 = os.path.join(root,  "im2.png")
-        path_mid = os.path.join(root,  "im3.png")
+        path_mid = os.path.join(root,  "im2.png")
+        path_pre1 = os.path.join(root,  "im3.png")
     else:
-        path_pre2 = os.path.join(root,  "im1.png")
-        path_pre1 = os.path.join(root,  "im2.png")
-        path_mid = os.path.join(root,  "im3.png")
+        path_pre1 = os.path.join(root,  "im1.png")
+        path_mid = os.path.join(root,  "im2.png")
+        path_pre2 = os.path.join(root,  "im3.png")
 
     im_pre2 = imread(path_pre2)
     im_pre1 = imread(path_pre1)
@@ -40,10 +40,10 @@ def Vimeo_90K_loader(root, im_path, input_frame_size = (3, 256, 448), output_fra
             im_mid = np.flipud(im_mid)
             im_pre1 = np.flipud(im_pre1)
 
-    X0 = np.transpose(im_pre2,(2,0,1))
-    X2 = np.transpose(im_mid, (2, 0, 1))
+    X0 = np.transpose(im_pre1,(2,0,1))
+    X2 = np.transpose(im_pre2, (2, 0, 1))
 
-    y = np.transpose(im_pre1, (2, 0, 1))
+    y = np.transpose(im_mid, (2, 0, 1))
     return X0.astype("float32")/ 255.0, \
             X2.astype("float32")/ 255.0,\
             y.astype("float32")/ 255.0
