@@ -21,7 +21,7 @@ int SeparableConvLayer_gpu_forward(
 	if(channel!=3) return error;
 	int batch = input1.size(0);
 	if(input2.size( 0) != batch) return error;
-	if(input2.size(1) != input2.size(1)) return error;
+	if(input2.size(1) != input3.size(1)) return error; //change by zhenghe, am I right?
 
 	int h = input1.size(2);
 	int w = input1.size(3);
