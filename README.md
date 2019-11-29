@@ -196,7 +196,7 @@ Download the pretrained MegaDepth and PWCNet models
     $ cd MegaDepth/checkpoints/test_local
     $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/best_generalization_net_G.pth
     $ cd ../../../PWCNet
-    $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/pwc_net_pth.tar
+    $ wget http://vllab1.ucmerced.edu/~wenbobao/DAIN/pwc_net.pth.tar
     $ cd  ..
     
 Run the training script:
