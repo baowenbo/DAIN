@@ -83,17 +83,16 @@ https://drive.google.com/open?id=1CgCLmVC_WTVTAcA_IdWbLqR8MS18zHoa
 <img src="https://drive.google.com/uc?export=view&id=14n7xvb9hjTKqfcr7ZpEFyfMvx6E8NhD_" width="200"/>
 </p>
 
-
 ### Citation
 If you find the code and datasets useful in your research, please cite:
 
     @inproceedings{DAIN,
         author    = {Bao, Wenbo and Lai, Wei-Sheng and Ma, Chao and Zhang, Xiaoyun and Gao, Zhiyong and Yang, Ming-Hsuan}, 
         title     = {Depth-Aware Video Frame Interpolation}, 
-        booktitle = {IEEE Conferene on Computer Vision and Pattern Recognition},
+        booktitle = {IEEE Conference on Computer Vision and Pattern Recognition},
         year      = {2019}
     }
-    
+
 ### Requirements and Dependencies
 - Ubuntu (We test with Ubuntu = 16.04.5 LTS)
 - Python (We test with Python = 3.6.8 in Anaconda3 = 4.1.1)
