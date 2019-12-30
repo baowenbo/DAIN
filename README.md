@@ -10,7 +10,7 @@ and [Ming-Hsuan Yang](http://faculty.ucmerced.edu/mhyang/)
 
 IEEE Conference on Computer Vision and Pattern Recognition, Long Beach, CVPR 2019
 
-THIS WORK IS BUILT UPON OUR PREVIOUS WORK [MEMC-NET](https://github.com/baowenbo/MEMC-Net), IN WHICH WE PROPOSE THE ADAPTIVE WARPING LAYER. PLEASE ALSO CONSIDER CITING MEMC-NET.
+This work is developed based on our TPAMI work [MEMC-NET](https://github.com/baowenbo/MEMC-Net), where we propose the adaptive warping layer. Please also consider referring to it.
 
 ### Table of Contents
 1. [Introduction](#introduction)
