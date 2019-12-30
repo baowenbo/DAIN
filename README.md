@@ -10,7 +10,7 @@ and [Ming-Hsuan Yang](http://faculty.ucmerced.edu/mhyang/)
 
 IEEE Conference on Computer Vision and Pattern Recognition, Long Beach, CVPR 2019
 
-THIS WORK IS BUILT UPON OUR PREVIOUS WORK CALLED [MEMC-NET](https://github.com/baowenbo/MEMC-Net), IN WHICH WE PROPOSE THE ADAPTIVE WARPING LAYER. PLEASE ALSO CONSIDER CITING MEMC-NET.
+THIS WORK IS BUILT UPON OUR PREVIOUS WORK [MEMC-NET](https://github.com/baowenbo/MEMC-Net), IN WHICH WE PROPOSE THE ADAPTIVE WARPING LAYER. PLEASE ALSO CONSIDER CITING MEMC-NET.
 
 ### Table of Contents
 1. [Introduction](#introduction)
@@ -91,6 +91,13 @@ If you find the code and datasets useful in your research, please cite:
         title     = {Depth-Aware Video Frame Interpolation}, 
         booktitle = {IEEE Conference on Computer Vision and Pattern Recognition},
         year      = {2019}
+    }
+    @article{MEMC-Net,
+         title={MEMC-Net: Motion Estimation and Motion Compensation Driven Neural Network for Video Interpolation and Enhancement},
+         author={Bao, Wenbo and Lai, Wei-Sheng, and Zhang, Xiaoyun and Gao, Zhiyong and Yang, Ming-Hsuan},
+         journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+         doi={10.1109/TPAMI.2019.2941941},
+         year={2018}
     }
 
 ### Requirements and Dependencies
