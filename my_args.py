@@ -75,9 +75,9 @@ if args.uid == None:
     print("revise the unique id to a random numer " + str(unique_id))
     args.uid = unique_id
     timestamp = datetime.datetime.now().strftime("%a-%b-%d-%H:%M")
-    save_path = '../model_weights/'+ args.uid  +'-' + timestamp
+    save_path = './model_weights/'+ args.uid  +'-' + timestamp
 else:
-    save_path = '../model_weights/'+ str(args.uid)
+    save_path = './model_weights/'+ str(args.uid)
 
 # print("no pth here : " + save_path + "/best"+".pth")
 if not os.path.exists(save_path + "/best"+".pth"):
