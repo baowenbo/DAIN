@@ -106,14 +106,14 @@ If you find the code and datasets useful in your research, please cite:
 - Cuda & Cudnn (We test with Cuda = 9.0 and Cudnn = 7.0)
 - PyTorch (The customized depth-aware flow projection and other layers require ATen API in PyTorch = 1.0.0)
 - GCC (Compiling PyTorch 1.0.0 extension files (.c/.cu) requires gcc = 4.9.1 and nvcc = 9.0 compilers)
-- NVIDIA GPU (We use Titan X (Pascal) with compute = 6.1, but we support compute_50/52/60/61 devices, should you have devices with higher compute capability, please revise [this](https://github.com/baowenbo/DAIN/blob/master/my_package/DepthFlowProjection/setup.py))
+- NVIDIA GPU (We use RTX 2080 with compute = 7.5, but we support compute_50/52/60/61 devices, should you have devices with higher compute capability, please revise [this](https://github.com/baowenbo/DAIN/blob/master/my_package/DepthFlowProjection/setup.py))
 
 ### Installation
 Download repository:
 
     $ git clone https://github.com/baowenbo/DAIN.git
 
-Before building Pytorch extensions, be sure you have `pytorch >= 1.0.0`:
+Before building Pytorch extensions, be sure you have `pytorch >= 1.2.0` (This is a branch for pytorch1.2 with GPU of compute_75 level):
     
     $ python -c "import torch; print(torch.__version__)"
     
@@ -125,7 +125,7 @@ Generate our PyTorch extensions:
 
 Generate the Correlation package required by [PWCNet](https://github.com/NVlabs/PWC-Net/tree/master/PyTorch/external_packages/correlation-pytorch-master):
     
-    $ cd ../PWCNet/correlation_package_pytorch1_0
+    $ cd ../PWCNet/correlation_package_pytorch1_2
     $ ./build.sh
 
 
