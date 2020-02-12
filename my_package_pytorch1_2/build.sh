@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "Need pytorch>=1.0.0"
+echo "Need pytorch>=1.2.0"
 source activate pytorch1.2.0
 which gcc
 gcc --version
