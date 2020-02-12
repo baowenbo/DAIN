@@ -5,6 +5,7 @@
 # !.gitignore
 
 checkpoints/test_local/opt.txt
+PWCNet/pwc_net.pth.tar
 MegaDepth/checkpoints/*
 model_weights/*
 MiddleBurySet/*
