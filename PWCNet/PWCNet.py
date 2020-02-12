@@ -12,7 +12,9 @@ import os
 os.environ['PYTHON_EGG_CACHE'] = 'tmp/' # a writable directory 
 #from .correlation_package.modules.corr import Correlation
 # from PWCNet.correlation_package_pytorch0_4.correlation import Correlation #pytorch0.4 version
-from PWCNet.correlation_package_pytorch1_0.correlation import Correlation #pytorch0.4 version
+# from PWCNet.correlation_package_pytorch1_0.correlation import Correlation #pytorch0.4 version
+from PWCNet.correlation_package_pytorch1_2.correlation import Correlation #pytorch0.4 version
+
 import numpy as np
 
 
