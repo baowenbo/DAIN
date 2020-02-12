@@ -29,7 +29,8 @@ def train():
         model = model.cuda()
 
     if not args.SAVED_MODEL==None:
-        args.SAVED_MODEL ='../model_weights/'+ args.SAVED_MODEL + "/best" + ".pth"
+        # args.SAVED_MODEL ='../model_weights/'+ args.SAVED_MODEL + "/best" + ".pth"
+        args.SAVED_MODEL ='./model_weights/best.pth'
         print("Fine tuning on " +  args.SAVED_MODEL)
         if not  args.use_cuda:
             pretrained_dict = torch.load(args.SAVED_MODEL, map_location=lambda storage, loc: storage)
@@ -138,7 +139,7 @@ def train():
 
         for i, (X0_half,X1_half, y_half) in enumerate(train_loader):
 
-            if i >= 10 : #int(len(train_set) / args.batch_size ):
+            if i >= int(len(train_set) / args.batch_size ):
                 #(0 if t == 0 else EPOCH):#
                 break
 
