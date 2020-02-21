@@ -150,6 +150,14 @@ and Middlebury dataset:
     $ unzip other-gt-interp.zip
     $ cd ..
 
+preinstallations:
+
+    $ cd PWCNet/correlation_package_pytorch1_0
+    $ sh build.sh
+    $ cd ../my_package
+    $ sh build.sh
+    $ cd ..
+
 We are good to go by:
 
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury.py
