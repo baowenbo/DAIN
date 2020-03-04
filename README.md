@@ -4,6 +4,9 @@ This is a modification of DAIN that allows the usage of Google Colab and is able
 [Original File by btahir can be found here.](https://github.com/baowenbo/DAIN/issues/44)
 This is a modification by Styler00Dollar.
 
+Simply copy the Colab_DAIN_alpha.ipynb file to your Google Drive or use this [link](https://colab.research.google.com/drive/1l_eduEo24IeA9Sy4lOMOX8io6VcKDaU4).
+
+
 ### Credits for the original DAIN implementation (Depth-Aware Video Frame Interpolation)
 [Project](https://sites.google.com/view/wenbobao/dain) **|** [Paper](http://arxiv.org/abs/1904.00830)
 
