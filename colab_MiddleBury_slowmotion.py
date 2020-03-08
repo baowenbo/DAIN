@@ -125,7 +125,7 @@ while input_frame < final_frame:
     y_s,offset,filter = model(torch.stack((X0, X1),dim = 0))
     y_ = y_s[save_which]
 
-    frames_left = output_frame_count - input_frame
+    frames_left = final_frame - input_frame
     estimated_seconds_left = frames_left * loop_timer.avg
     estimated_time_left = datetime.timedelta(seconds=estimated_seconds_left)
     print(f"******Processed image {input_frame} | Time per image (avg): {loop_timer.avg:2.2f}s | Time left: {estimated_time_left} ******************" )
