@@ -2,9 +2,9 @@
 This is a modification of DAIN that allows the usage of Google Colab and is able to interpolate frame sequences or videos instead of 2 frames. The original code is limited to interpolation between 2 frames and this code includes a simple fix.
 
 [Original File by btahir can be found here.](https://github.com/baowenbo/DAIN/issues/44)
-This is a modification by Styler00Dollar.
+This is a modification by Styler00Dollar and [Alpha](https://github.com/AlphaGit).
 
-Simply copy the Colab_DAIN_alpha.ipynb file to your Google Drive or use this [link](https://colab.research.google.com/drive/1l_eduEo24IeA9Sy4lOMOX8io6VcKDaU4).
+Simply copy the Colab_DAIN_alpha.ipynb file to your Google Drive or use this [link](https://colab.research.google.com/drive/1crSsqR_um0GRiDCcVKYobJ-cTIkYe9tq#scrollTo=iGPHW5SOpPe3).
 
 
 ### Credits for the original DAIN implementation (Depth-Aware Video Frame Interpolation)
