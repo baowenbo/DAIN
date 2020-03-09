@@ -63,7 +63,7 @@ input_frame = 0
 loop_timer = AverageMeter()
 
 # TODO: Read amount of frames from the size of files available in `frames_dir`
-final_frame = 100 
+final_frame = 100
 
 while input_frame < final_frame:
     input_frame += 1
@@ -71,14 +71,16 @@ while input_frame < final_frame:
     start_time = time.time()
 
     #input file names
-    frame_1_filename = f"{input_frame:0>5}.png" # frame00010.png
-    frame_1_path = os.path.join(frames_dir, frame_1_filename)
+    dateiname_start = input_frame
+    dateiname_start = str(dateiname_start).zfill(5)
+    dateiname_ende = input_frame + 1
+    dateiname_ende = str(dateiname_ende).zfill(5)
+    arguments_strFirst = os.path.join(frames_dir, str(dateiname_start)+'.png') #frame10.png
+    arguments_strSecond = os.path.join(frames_dir, str(dateiname_ende)+'.png') #frame11
 
-    frame_2_filename = f"{input_frame + 1:0>5}.png" # frame00011.png
-    frame_2_path = os.path.join(frames_dir, frame_1_filename)
 
-    X0 =  torch.from_numpy( np.transpose(imread(frame_1_path), (2,0,1)).astype("float32")/ 255.0).type(dtype)
-    X1 =  torch.from_numpy( np.transpose(imread(frame_2_path), (2,0,1)).astype("float32")/ 255.0).type(dtype)
+    X0 =  torch.from_numpy( np.transpose(imread(arguments_strFirst), (2,0,1)).astype("float32")/ 255.0).type(dtype)
+    X1 =  torch.from_numpy( np.transpose(imread(arguments_strSecond), (2,0,1)).astype("float32")/ 255.0).type(dtype)
 
     y_ = torch.FloatTensor()
 
@@ -158,7 +160,7 @@ while input_frame < final_frame:
         (1, 2, 0)) for filter_i in filter]  if filter is not None else None
     X1 = np.transpose(255.0 * X1.clip(0,1.0)[0, :, intPaddingTop:intPaddingTop+intHeight, intPaddingLeft: intPaddingLeft+intWidth], (1, 2, 0))
 
-    shutil.copy(frame_1_path, os.path.join(output_dir, f"{output_frame_count:0>5d}.png"))
+    shutil.copy(arguments_strFirst, os.path.join(output_dir, f"{output_frame_count:0>5d}.png"))
     output_frame_count += 1
     for item, time_offset in zip(y_, time_offsets):
         output_frame_file_path = os.path.join(output_dir, f"{output_frame_count:0>5d}.png")
