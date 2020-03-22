@@ -129,11 +129,6 @@ while input_frame < final_frame - 1:
     y_s,offset,filter = model(torch.stack((X0, X1),dim = 0))
     y_ = y_s[save_which]
 
-    frames_left = final_frame - input_frame
-    estimated_seconds_left = frames_left * loop_timer.avg
-    estimated_time_left = datetime.timedelta(seconds=estimated_seconds_left)
-    print(f"******Processed image {input_frame} | Time per image (avg): {loop_timer.avg:2.2f}s | Time left: {estimated_time_left} ******************" )
-
     if use_cuda:
         X0 = X0.data.cpu().numpy()
         if not isinstance(y_, list):
@@ -171,5 +166,10 @@ while input_frame < final_frame - 1:
 
     end_time = time.time()
     loop_timer.update(end_time - start_time)
+
+    frames_left = final_frame - input_frame
+    estimated_seconds_left = frames_left * loop_timer.avg
+    estimated_time_left = datetime.timedelta(seconds=estimated_seconds_left)
+    print(f"****** Processed frame {input_frame} | Time per frame (avg): {loop_timer.avg:2.2f}s | Time left: {estimated_time_left} ******************" )
 
 print("Finished processing images.")
