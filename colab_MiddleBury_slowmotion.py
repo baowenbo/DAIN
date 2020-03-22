@@ -58,7 +58,6 @@ output_dir = args.frame_output_dir
 timestep = args.time_step
 time_offsets = [kk * timestep for kk in range(1, int(1.0 / timestep))]
 
-output_frame_count = 1
 input_frame = args.start_frame - 1
 loop_timer = AverageMeter()
 
@@ -79,7 +78,6 @@ while input_frame < final_frame - 1:
     dateiname_ende = str(dateiname_ende).zfill(5)
     arguments_strFirst = os.path.join(frames_dir, str(dateiname_start)+'.png') #frame10.png
     arguments_strSecond = os.path.join(frames_dir, str(dateiname_ende)+'.png') #frame11
-
 
     X0 =  torch.from_numpy( np.transpose(imread(arguments_strFirst), (2,0,1)).astype("float32")/ 255.0).type(dtype)
     X1 =  torch.from_numpy( np.transpose(imread(arguments_strSecond), (2,0,1)).astype("float32")/ 255.0).type(dtype)
@@ -157,12 +155,12 @@ while input_frame < final_frame - 1:
         (1, 2, 0)) for filter_i in filter]  if filter is not None else None
     X1 = np.transpose(255.0 * X1.clip(0,1.0)[0, :, intPaddingTop:intPaddingTop+intHeight, intPaddingLeft: intPaddingLeft+intWidth], (1, 2, 0))
 
-    shutil.copy(arguments_strFirst, os.path.join(output_dir, f"{output_frame_count:0>5d}.png"))
-    output_frame_count += 1
+    interpolated_frame_number = 0
+    shutil.copy(arguments_strFirst, os.path.join(output_dir, f"{input_frame:0>5d}{interpolated_frame_number:0>3d}.png"))
     for item, time_offset in zip(y_, time_offsets):
-        output_frame_file_path = os.path.join(output_dir, f"{output_frame_count:0>5d}.png")
+        interpolated_frame_number += 1
+        output_frame_file_path = os.path.join(output_dir, f"{input_frame:0>5d}{interpolated_frame_number:0>3d}.png")
         imsave(output_frame_file_path, np.round(item).astype(numpy.uint8))
-        output_frame_count += 1
 
     end_time = time.time()
     loop_timer.update(end_time - start_time)
@@ -171,5 +169,9 @@ while input_frame < final_frame - 1:
     estimated_seconds_left = frames_left * loop_timer.avg
     estimated_time_left = datetime.timedelta(seconds=estimated_seconds_left)
     print(f"****** Processed frame {input_frame} | Time per frame (avg): {loop_timer.avg:2.2f}s | Time left: {estimated_time_left} ******************" )
+
+# Copying last frame
+last_frame_filename = os.path.join(frames_dir, str(str(final_frame).zfill(5))+'.png')
+shutil.copy(last_frame_filename, os.path.join(output_dir, f"{final_frame:0>5d}{0:0>3d}.png"))
 
 print("Finished processing images.")
