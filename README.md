@@ -228,7 +228,7 @@ Then test the new model by executing:
 ### Google Colab Demo
 This is a modification of DAIN that allows the usage of Google Colab and is able to do a full demo interpolation from a source video to a target video.
 
-Original Notebook File by btahir can be found [here].(https://github.com/baowenbo/DAIN/issues/44)
+Original Notebook File by btahir can be found [here](https://github.com/baowenbo/DAIN/issues/44).
 This is a modification by [Styler00Dollar](https://github.com/styler00dollar) and [Alpha](https://github.com/AlphaGit).
 
 Simply upload the `Colab_DAIN_alpha.ipynb` file to your Google Drive or use this [link](https://colab.research.google.com/drive/1crSsqR_um0GRiDCcVKYobJ-cTIkYe9tq#scrollTo=iGPHW5SOpPe3).
