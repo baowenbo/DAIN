@@ -5,7 +5,7 @@ import torch
 import numpy as np
 import numpy
 import networks
-from my_args import  args
+from my_args import args
 from scipy.misc import imread, imsave
 from AverageMeter import  *
 import shutil
@@ -52,20 +52,22 @@ use_cuda = args.use_cuda
 save_which = args.save_which
 dtype = args.dtype
 
-frames_dir = '/content/DAIN/input_frames'
-output_dir = '/content/DAIN/output_frames'
+frames_dir = args.frame_input_dir
+output_dir = args.frame_output_dir
 
 timestep = args.time_step
 time_offsets = [kk * timestep for kk in range(1, int(1.0 / timestep))]
 
 output_frame_count = 1
-input_frame = 0
+input_frame = args.start_frame - 1
 loop_timer = AverageMeter()
 
-# TODO: Read amount of frames from the size of files available in `frames_dir`
-final_frame = 100
+final_frame = args.end_frame
 
-while input_frame < final_frame:
+# we want to have input_frame between (start_frame-1) and (end_frame-2)
+# this is because at each step we read (frame) and (frame+1)
+# so the last iteration will actuall be (end_frame-1) and (end_frame)
+while input_frame < final_frame - 1:
     input_frame += 1
 
     start_time = time.time()
