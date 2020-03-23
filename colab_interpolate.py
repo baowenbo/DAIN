@@ -5,101 +5,88 @@ import torch
 import numpy as np
 import numpy
 import networks
-from my_args import  args
-from scipy.misc import imread, imsave
+from my_args import args
+from imageio import imread, imsave
 from AverageMeter import  *
 import shutil
 import datetime
 torch.backends.cudnn.benchmark = True
 
 model = networks.__dict__[args.netName](
-                                    channel=args.channels,
+                                    channel = args.channels,
                                     filter_size = args.filter_size,
-                                    timestep=args.time_step,
-                                    training=False)
+                                    timestep = args.time_step,
+                                    training = False)
 
 if args.use_cuda:
     model = model.cuda()
 
-args.SAVED_MODEL = './model_weights/best.pth'
-if os.path.exists(args.SAVED_MODEL):
-    print("The testing model weight is: " + args.SAVED_MODEL)
-    if not args.use_cuda:
-        pretrained_dict = torch.load(args.SAVED_MODEL, map_location=lambda storage, loc: storage)
-        # model.load_state_dict(torch.load(args.SAVED_MODEL, map_location=lambda storage, loc: storage))
-    else:
-        pretrained_dict = torch.load(args.SAVED_MODEL)
-        # model.load_state_dict(torch.load(args.SAVED_MODEL))
-
-    model_dict = model.state_dict()
-    # 1. filter out unnecessary keys
-    pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
-    # 2. overwrite entries in the existing state dict
-    model_dict.update(pretrained_dict)
-    # 3. load the new state dict
-    model.load_state_dict(model_dict)
-    # 4. release the pretrained dict for saving memory
-    pretrained_dict = []
-else:
+model_path = './model_weights/best.pth'
+if not os.path.exists(model_path):
     print("*****************************************************************")
     print("**** We couldn't load any trained weights ***********************")
     print("*****************************************************************")
     exit(1)
 
+if args.use_cuda:
+    pretrained_dict = torch.load(model_path)
+else:
+    pretrained_dict = torch.load(model_path, map_location=lambda storage, loc: storage)
+
+model_dict = model.state_dict()
+# 1. filter out unnecessary keys
+pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
+# 2. overwrite entries in the existing state dict
+model_dict.update(pretrained_dict)
+# 3. load the new state dict
+model.load_state_dict(model_dict)
+# 4. release the pretrained dict for saving memory
+pretrained_dict = []
+
 model = model.eval() # deploy mode
 
-use_cuda = args.use_cuda
-save_which = args.save_which
-dtype = args.dtype
-
-frames_dir = '/content/DAIN/input_frames'
-output_dir = '/content/DAIN/output_frames'
+frames_dir = args.frame_input_dir
+output_dir = args.frame_output_dir
 
 timestep = args.time_step
 time_offsets = [kk * timestep for kk in range(1, int(1.0 / timestep))]
 
-output_frame_count = 1
-input_frame = 0
+input_frame = args.start_frame - 1
 loop_timer = AverageMeter()
 
-# TODO: Read amount of frames from the size of files available in `frames_dir`
-final_frame = 100
+final_frame = args.end_frame
 
-while input_frame < final_frame:
+torch.set_grad_enabled(False)
+
+# we want to have input_frame between (start_frame-1) and (end_frame-2)
+# this is because at each step we read (frame) and (frame+1)
+# so the last iteration will actuall be (end_frame-1) and (end_frame)
+while input_frame < final_frame - 1:
     input_frame += 1
 
     start_time = time.time()
 
-    #input file names
-    dateiname_start = input_frame
-    dateiname_start = str(dateiname_start).zfill(5)
-    dateiname_ende = input_frame + 1
-    dateiname_ende = str(dateiname_ende).zfill(5)
-    arguments_strFirst = os.path.join(frames_dir, str(dateiname_start)+'.png') #frame10.png
-    arguments_strSecond = os.path.join(frames_dir, str(dateiname_ende)+'.png') #frame11
+    filename_frame_1 = os.path.join(frames_dir, f'{input_frame:0>5d}.png')
+    filename_frame_2 = os.path.join(frames_dir, f'{input_frame+1:0>5d}.png')
 
-
-    X0 =  torch.from_numpy( np.transpose(imread(arguments_strFirst), (2,0,1)).astype("float32")/ 255.0).type(dtype)
-    X1 =  torch.from_numpy( np.transpose(imread(arguments_strSecond), (2,0,1)).astype("float32")/ 255.0).type(dtype)
-
-    y_ = torch.FloatTensor()
+    X0 = torch.from_numpy(np.transpose(imread(filename_frame_1), (2,0,1)).astype("float32") / 255.0).type(args.dtype)
+    X1 = torch.from_numpy(np.transpose(imread(filename_frame_2), (2,0,1)).astype("float32") / 255.0).type(args.dtype)
 
     assert (X0.size(1) == X1.size(1))
     assert (X0.size(2) == X1.size(2))
 
     intWidth = X0.size(2)
     intHeight = X0.size(1)
-    channel = X0.size(0)
-    if not channel == 3:
-        print(f"Skipping {frame_1_filename}-{frame_2_filename} -- expected 3 color channels but found {channel}.")
+    channels = X0.size(0)
+    if not channels == 3:
+        print(f"Skipping {filename_frame_1}-{filename_frame_2} -- expected 3 color channels but found {channels}.")
         continue
 
     if intWidth != ((intWidth >> 7) << 7):
         intWidth_pad = (((intWidth >> 7) + 1) << 7)  # more than necessary
-        intPaddingLeft =int(( intWidth_pad - intWidth)/2)
+        intPaddingLeft = int((intWidth_pad - intWidth) / 2)
         intPaddingRight = intWidth_pad - intWidth - intPaddingLeft
     else:
-        intWidth_pad = intWidth
         intPaddingLeft = 32
         intPaddingRight= 32
 
@@ -108,31 +95,24 @@ while input_frame < final_frame:
         intPaddingTop = int((intHeight_pad - intHeight) / 2)
         intPaddingBottom = intHeight_pad - intHeight - intPaddingTop
     else:
-        intHeight_pad = intHeight
         intPaddingTop = 32
         intPaddingBottom = 32
 
     pader = torch.nn.ReplicationPad2d([intPaddingLeft, intPaddingRight, intPaddingTop, intPaddingBottom])
 
-    torch.set_grad_enabled(False)
     X0 = Variable(torch.unsqueeze(X0,0))
     X1 = Variable(torch.unsqueeze(X1,0))
     X0 = pader(X0)
     X1 = pader(X1)
 
-    if use_cuda:
+    if args.use_cuda:
         X0 = X0.cuda()
         X1 = X1.cuda()
 
-    y_s,offset,filter = model(torch.stack((X0, X1),dim = 0))
-    y_ = y_s[save_which]
+    y_s, offset, filter = model(torch.stack((X0, X1),dim = 0))
+    y_ = y_s[args.save_which]
 
-    frames_left = final_frame - input_frame
-    estimated_seconds_left = frames_left * loop_timer.avg
-    estimated_time_left = datetime.timedelta(seconds=estimated_seconds_left)
-    print(f"******Processed image {input_frame} | Time per image (avg): {loop_timer.avg:2.2f}s | Time left: {estimated_time_left} ******************" )
-
-    if use_cuda:
+    if args.use_cuda:
         X0 = X0.data.cpu().numpy()
         if not isinstance(y_, list):
             y_ = y_.data.cpu().numpy()
@@ -160,14 +140,23 @@ while input_frame < final_frame:
         (1, 2, 0)) for filter_i in filter]  if filter is not None else None
     X1 = np.transpose(255.0 * X1.clip(0,1.0)[0, :, intPaddingTop:intPaddingTop+intHeight, intPaddingLeft: intPaddingLeft+intWidth], (1, 2, 0))
 
-    shutil.copy(arguments_strFirst, os.path.join(output_dir, f"{output_frame_count:0>5d}.png"))
-    output_frame_count += 1
+    interpolated_frame_number = 0
+    shutil.copy(filename_frame_1, os.path.join(output_dir, f"{input_frame:0>5d}{interpolated_frame_number:0>3d}.png"))
     for item, time_offset in zip(y_, time_offsets):
-        output_frame_file_path = os.path.join(output_dir, f"{output_frame_count:0>5d}.png")
+        interpolated_frame_number += 1
+        output_frame_file_path = os.path.join(output_dir, f"{input_frame:0>5d}{interpolated_frame_number:0>3d}.png")
         imsave(output_frame_file_path, np.round(item).astype(numpy.uint8))
-        output_frame_count += 1
 
     end_time = time.time()
     loop_timer.update(end_time - start_time)
+
+    frames_left = final_frame - input_frame
+    estimated_seconds_left = frames_left * loop_timer.avg
+    estimated_time_left = datetime.timedelta(seconds=estimated_seconds_left)
+    print(f"****** Processed frame {input_frame} | Time per frame (avg): {loop_timer.avg:2.2f}s | Time left: {estimated_time_left} ******************" )
+
+# Copying last frame
+last_frame_filename = os.path.join(frames_dir, str(str(final_frame).zfill(5))+'.png')
+shutil.copy(last_frame_filename, os.path.join(output_dir, f"{final_frame:0>5d}{0:0>3d}.png"))
 
 print("Finished processing images.")

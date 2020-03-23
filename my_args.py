@@ -66,6 +66,12 @@ parser.add_argument('--dtype', default=torch.cuda.FloatTensor, choices = [torch.
 parser.add_argument('--uid', type=str, default= None, help='unique id for the training')
 parser.add_argument('--force', action='store_true', help='force to override the given uid')
 
+# Colab version
+parser.add_argument('--start_frame', type = int, default = 1, help='first frame number to process')
+parser.add_argument('--end_frame', type = int, default = 100, help='last frame number to process')
+parser.add_argument('--frame_input_dir', type = str, default = '/content/DAIN/input_frames', help='frame input directory')
+parser.add_argument('--frame_output_dir', type = str, default = '/content/DAIN/output_frames', help='frame output directory')
+
 args = parser.parse_args()
 
 import shutil
