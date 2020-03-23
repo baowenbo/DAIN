@@ -231,7 +231,7 @@ This is a modification of DAIN that allows the usage of Google Colab and is able
 Original Notebook File by btahir can be found [here](https://github.com/baowenbo/DAIN/issues/44).
 This is a modification by [Styler00Dollar](https://github.com/styler00dollar) and [Alpha](https://github.com/AlphaGit).
 
-Simply upload the `Colab_DAIN_alpha.ipynb` file to your Google Drive or use this [link](https://colab.research.google.com/drive/1crSsqR_um0GRiDCcVKYobJ-cTIkYe9tq#scrollTo=iGPHW5SOpPe3).
+Simply upload the `Colab_DAIN.ipynb` file to your Google Drive or use this [link](https://drive.google.com/file/d/1liFEBQ2_ZN9kLkW7SKKbxCnQGuulUldw/view?usp=sharing).
 
 ### Contact
 [Wenbo Bao](mailto:bwb0813@gmail.com); [Wei-Sheng (Jason) Lai](mailto:phoenix104104@gmail.com)
