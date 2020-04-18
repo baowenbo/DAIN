@@ -20,7 +20,8 @@ This work is developed based on our TPAMI work [MEMC-Net](https://github.com/bao
 1. [Testing Pre-trained Models](#testing-pre-trained-models)
 1. [Downloading Results](#downloading-results)
 1. [Slow-motion Generation](#slow-motion-generation)
-1. [Training New Models](#training-new-models) 
+1. [Training New Models](#training-new-models)
+1. [Google Colab Demo](#google-colab-demo)
 
 ### Introduction
 We propose the **D**epth-**A**ware video frame **IN**terpolation (**DAIN**) model to explicitly detect the occlusion by exploring the depth cue.
@@ -223,6 +224,14 @@ Replace the pre-trained `model_weights/best.pth` model with the newly trained `m
 Then test the new model by executing: 
 
     $ CUDA_VISIBLE_DEVICES=0 python demo_MiddleBury.py
+
+### Google Colab Demo
+This is a modification of DAIN that allows the usage of Google Colab and is able to do a full demo interpolation from a source video to a target video.
+
+Original Notebook File by btahir can be found [here](https://github.com/baowenbo/DAIN/issues/44).
+This is a modification by [Styler00Dollar](https://github.com/styler00dollar) and [Alpha](https://github.com/AlphaGit).
+
+Simply upload the `Colab_DAIN.ipynb` file to your Google Drive or use this [link](https://colab.research.google.com/drive/1gzsfDV_MIdehr7Y8ZzWjTuW-mMZRP4Vy).
 
 ### Contact
 [Wenbo Bao](mailto:bwb0813@gmail.com); [Wei-Sheng (Jason) Lai](mailto:phoenix104104@gmail.com)
