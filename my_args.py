@@ -80,7 +80,7 @@ if args.uid == None:
     unique_id = str(numpy.random.randint(0, 100000))
     print("revise the unique id to a random numer " + str(unique_id))
     args.uid = unique_id
-    timestamp = datetime.datetime.now().strftime("%a-%b-%d-%H:%M")
+    timestamp = datetime.datetime.now().strftime("%a-%b-%d-%H-%M")
     save_path = './model_weights/'+ args.uid  +'-' + timestamp
 else:
     save_path = './model_weights/'+ str(args.uid)
