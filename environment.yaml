@@ -17,7 +17,7 @@ dependencies:
   - openssl=1.1.1=h7b6447c_0
   - pywavelets=1.0.1=py36hdd07704_0
   - scikit-image=0.14.1=py36he6710b0_0
-  - scipy=1.2.0=py36h7c811a0_0
+  - scipy=1.1.0=py36h7c811a0_0
   - toolz=0.9.0=py36_0
   - cycler=0.10.0=py_1
   - expat=2.2.5=hf484d3e_1002
