@@ -18,7 +18,7 @@ nvcc_args = [
     # NVIDIA NVS: (None)
     # GeForce / Titan: GTX TITAN X, GTX 980 Ti, GTX 980, GTX 970, GTX 960, GTX 950, GTX 980, GTX 980M, GTX 970M, GTX 965M, 910M
     # Jetson: (None)
-    '-gencode', 'arch=compute_52,code=sm_52', # , 
+    '-gencode', 'arch=compute_52,code=sm_52',
 
     # Tesla: P100
     # Quadro: GP100
