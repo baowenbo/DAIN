@@ -5,9 +5,7 @@ import torch
 from setuptools import setup, find_packages
 from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 
-cxx_args = ['-std=c++11']
-
-from nvcc_args import nvcc_args
+from compiler_args import nvcc_args, cxx_args
 
 setup(
     name='separableconvflow_cuda',

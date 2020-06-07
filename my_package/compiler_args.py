@@ -39,8 +39,12 @@ nvcc_args = [
     # NVIDIA NVS: (None)
     # GeForce / Titan: TITAN RTX, RTX 2080 Ti, RTX 2080, RTX 2070, RTX 2060, RTX 2080, RTX 2070, RTX 2060
     # Jetson: (None)
-    '-gencode', 'arch=compute_75,code=sm_75'
+    '-gencode', 'arch=compute_75,code=sm_75',
 
     # '-gencode', 'arch=compute_70,code=sm_70',
     # '-gencode', 'arch=compute_70,code=compute_70'
+
+    '-w' # Ignore compiler warnings.
 ]
+
+cxx_args = ['-std=c++11', '-w']
