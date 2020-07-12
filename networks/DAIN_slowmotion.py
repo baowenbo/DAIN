@@ -148,7 +148,7 @@ class DAIN_slowmotion(torch.nn.Module):
                         self.forward_flownets(self.flownets, cur_offset_input, time_offsets=time_offsets),
                         self.forward_flownets(self.flownets, torch.cat((cur_offset_input[:, 3:, ...],
                                             cur_offset_input[:, 0:3, ...]), dim=1),
-                                  time_offsets=time_offsets[::-1])
+                                  time_offsets=[1 - t for t in time_offsets])
                         ]
 
         torch.cuda.synchronize() #synchronize s1 and s2
