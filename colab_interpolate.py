@@ -81,6 +81,24 @@ class SkipFrame(Exception):
     pass
 
 
+def load_scene_frames():
+    """ Scene frames are the last frames of scenes, their successors introduce a new scene """
+    frames = set()
+    with open('scene_frames.log') as f:
+        for line in f:
+            if line:
+                frames.add(int(line))
+    return frames
+
+
+def is_jumping_scene(from_frame, to_frame):
+    """ It's jumping unless both frames and all between are of the same scene """
+    for f in range(from_frame, to_frame):
+        if f in scene_frames:
+            return True
+    return False
+
+
 def input_filename(input_frame):
     return os.path.join(frames_dir, f'{input_frame:0>5d}.png')
 
@@ -192,15 +210,17 @@ def interpolate(frame_1, frame_2):
 def normal_interpolate(input_frame):
     """ The normal interpolation between input_frame and input_frame+1 """
     copy(input_frame)
-    interpolate(input_frame, input_frame+1)
+    if not is_jumping_scene(input_frame, input_frame+1):
+        interpolate(input_frame, input_frame+1)
+    else:
+        copy(input_frame)
 
 
 def greased_interpolate(input_frame):
     """ Smooth out from further frames than the directly adjacent ones. Only works with 2x frame rate """
     assert timestep == 0.5
-    if input_frame - 1 < 1 or input_frame + 2 > final_frame:
-        copy(input_frame)
-        interpolate(input_frame, input_frame+1)
+    if input_frame - 1 < 1 or input_frame + 2 > final_frame or is_jumping_scene(input_frame-1, input_frame+2):
+        normal_interpolate(input_frame)
     else:
         interpolate(input_frame-1, input_frame+1)
         if input_frame == final_frame - 2:
@@ -255,14 +275,38 @@ def contains_double_frames(frames):
     return False
 
 
+def scene_limits(input_frame):
+    floor_frame = input_frame-2
+    for f in range(input_frame, input_frame-2, -1):
+        if f-1 in scene_frames:
+            floor_frame = f
+            break
+    ceil_frame = input_frame+2
+    for f in range(input_frame, input_frame+2, +1):
+        if f in scene_frames:
+            ceil_frame = f
+            break
+
+    description = ''
+    if floor_frame == input_frame-1:
+        description += 'floor=b '
+    if floor_frame == input_frame:
+        description += 'floor=c '
+    if ceil_frame == input_frame:
+        description += 'ceil=c '
+    if ceil_frame == input_frame+1:
+        description += 'ceil=d '
+
+    return floor_frame, ceil_frame, description
+
+
 def claymation_interpolate(input_frame):
     """ Extreme interpolate for 2x frame rate. Smooth transition even when the source animation has
     models moving only every second frame. Clay animation has such behaviour, and the same scene
     may even have models moving every frame while others only every second frame. """
     assert timestep == 0.5
     if input_frame - 2 < 1 or input_frame + 2 > final_frame:
-        copy(input_frame)
-        interpolate(input_frame, input_frame+1)
+        normal_interpolate(input_frame)
     else:
         # Using avg of 4 frame pointers and moving forward 2 of them. The moved
         # pointers must be 3 frames apart. This smoothes out duplicates, sacrificing
@@ -283,17 +327,18 @@ def claymation_interpolate(input_frame):
         # o = can use the normal smooth_c calculation, all pointers more forward
         # m = (B^C)^(C^D)
 
-        image_a = imread(input_filename(input_frame-2))
-        image_b = imread(input_filename(input_frame-1))
+        floor_frame, ceil_frame, s_limits = scene_limits(input_frame)
+        image_a = imread(input_filename(max(input_frame-2, floor_frame)))
+        image_b = imread(input_filename(max(input_frame-1, floor_frame)))
         image_c = imread(input_filename(input_frame))
-        image_d = imread(input_filename(input_frame+1))
-        image_e = imread(input_filename(input_frame+2))
+        image_d = imread(input_filename(min(input_frame+1, ceil_frame)))
+        image_e = imread(input_filename(min(input_frame+2, ceil_frame)))
 
         s_diffs = describe_diffs(image_c, image_d)
 
         @debug
         def d(image, algo):
-            debug_text_on_image(image, f'{algo}')
+            debug_text_on_image(image, f'{s_limits}{algo}')
             debug_text_on_image(image, f'{s_diffs}', position='right')
 
         # Copy or generate a new input_frame
@@ -334,6 +379,8 @@ mixers = {
 }
 interpolate_mixer = mixers.get(args.mixer)
 assert interpolate_mixer is not None, f'Mixer "{args.mixer}" not found'
+
+scene_frames = load_scene_frames()
 
 # we want to have input_frame between (start_frame-1) and (end_frame-2)
 # this is because at each step we read (frame) and (frame+1)
