@@ -8,9 +8,21 @@ modelnames =  networks.__all__
 # import datasets
 datasetNames = ('Vimeo_90K_interp') #datasets.__all__
 
+
+def str2bool(v):
+    if isinstance(v, bool):
+       return v
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
+
+
 parser = argparse.ArgumentParser(description='DAIN')
 
-parser.add_argument('--debug',action = 'store_true', help='Enable debug mode')
+parser.add_argument('--debug', type=str2bool, default=False, help='Enable debug mode')
 parser.add_argument('--netName', type=str, default='DAIN',
                     choices = modelnames,help = 'model architecture: ' +
                         ' | '.join(modelnames) +
@@ -67,10 +79,14 @@ parser.add_argument('--uid', type=str, default= None, help='unique id for the tr
 parser.add_argument('--force', action='store_true', help='force to override the given uid')
 
 # Colab version
+parser.add_argument('--resize_hotfix', type=str2bool, default=False, help='Apply the resize hotfix to compensate for interpolation creating slightly smaller images')
+parser.add_argument('--mixer', type = str, default = 'normal', help='frame mixer to use for interpolation')
 parser.add_argument('--start_frame', type = int, default = 1, help='first frame number to process')
 parser.add_argument('--end_frame', type = int, default = 100, help='last frame number to process')
 parser.add_argument('--frame_input_dir', type = str, default = '/content/DAIN/input_frames', help='frame input directory')
 parser.add_argument('--frame_output_dir', type = str, default = '/content/DAIN/output_frames', help='frame output directory')
+parser.add_argument('--doubleframe_distortion_threshold', type = int, default = 20, help='The claymation mixer detects double frames counting pixels whose difference (0-255) is larger (default: 20)')
+parser.add_argument('--doubleframe_distorted_pixel_ratio', type = float, default = 0.002, help='The claymation mixer considers treats adjacent frames as a double frame if the ratio (0-1.0) of differing pixels is lower (default: 0.001)')
 
 args = parser.parse_args()
 
