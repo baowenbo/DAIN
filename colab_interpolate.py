@@ -1,5 +1,6 @@
 import time
 import os
+import sys
 from torch.autograd import Variable
 import torch
 import numpy as np
@@ -7,12 +8,11 @@ import numpy
 import networks
 from my_args import args
 from imageio import imread, imsave
-from AverageMeter import  *
 import cv2
 from PIL import ImageFont, ImageDraw, Image
 from urllib.request import urlopen
+from tqdm import tqdm
 import shutil
-import datetime
 torch.backends.cudnn.benchmark = True
 
 model = networks.__dict__[args.netName](
@@ -55,7 +55,6 @@ timestep = args.time_step
 time_offsets = [kk * timestep for kk in range(1, int(1.0 / timestep))]
 
 input_frame = args.start_frame - 1
-loop_timer = AverageMeter()
 
 final_frame = args.end_frame
 
@@ -385,25 +384,16 @@ scene_frames = load_scene_frames()
 # we want to have input_frame between (start_frame-1) and (end_frame-2)
 # this is because at each step we read (frame) and (frame+1)
 # so the last iteration will actuall be (end_frame-1) and (end_frame)
-while input_frame < final_frame - 1:
-    input_frame += 1
-
-    start_time = time.time()
-
-    interpolated_frame_number = 0
-
-    try:
-        interpolate_mixer(input_frame)
-    except SkipFrame:
-        pass
-
-    end_time = time.time()
-    loop_timer.update(end_time - start_time)
-
-    frames_left = final_frame - input_frame
-    estimated_seconds_left = frames_left * loop_timer.avg
-    estimated_time_left = datetime.timedelta(seconds=estimated_seconds_left)
-    print(f"****** Processed frame {input_frame} | Time per frame (avg): {loop_timer.avg:2.2f}s | Time left: {estimated_time_left} ******************" )
+total = final_frame - input_frame - 1
+with tqdm(total=total, file=sys.stdout, smoothing=0) as pbar:
+    while input_frame < final_frame - 1:
+        pbar.update(1)
+        input_frame += 1
+        interpolated_frame_number = 0
+        try:
+            interpolate_mixer(input_frame)
+        except SkipFrame:
+            pass
 
 # Copying last frame
 last_frame_filename = os.path.join(frames_dir, str(str(final_frame).zfill(5))+'.png')
