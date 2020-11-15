@@ -237,7 +237,7 @@ To use the Colab, follow these steps:
 - Select the "Upload" option, and upload the `.ipynb` file
 - Start running the cells one by one, following the instructions.
 
-Colab file authors: [Styler00Dollar](https://github.com/styler00dollar) and [Alpha](https://github.com/AlphaGit).
+Colab file authors: [Styler00Dollar](https://github.com/styler00dollar) and [Alpha](https://github.com/AlphaGit), and more.
 
 ### Contact
 [Wenbo Bao](mailto:bwb0813@gmail.com); [Wei-Sheng (Jason) Lai](mailto:phoenix104104@gmail.com)
