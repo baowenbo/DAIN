@@ -1,5 +1,5 @@
 # References: https://developer.nvidia.com/cuda-gpus
-nvcc_args = [
+safe_nvcc_args = [
     # Tesla: K80, K80
     # Quadro: (None)
     # NVIDIA NVS: (None)
@@ -34,6 +34,9 @@ nvcc_args = [
     # Jetson: (None)
     '-gencode', 'arch=compute_61,code=sm_61',
 
+    # Tesla: V100
+    '-gencode', 'arch=compute_70,code=sm_70',
+
     # Tesla: T4
     # Quadro: RTX 8000, RTX 6000, RTX 5000, RTX 4000, RTX 5000, RTX 4000, RTX 3000, T2000, T1000
     # NVIDIA NVS: (None)
@@ -44,7 +47,58 @@ nvcc_args = [
     # '-gencode', 'arch=compute_70,code=sm_70',
     # '-gencode', 'arch=compute_70,code=compute_70'
 
-    '-w' # Ignore compiler warnings.
 ]
 
+CUDA_SUCCESS = 0
+
+def exec_cuda(descr, func):
+    result = func()
+    if result != CUDA_SUCCESS:
+        cuda.cuGetErrorString(result, ctypes.byref(error_str))
+        raise OSError(f"{descr} failed with error code {result}: {error_str.value.decode()}")
+
+try:
+    nvcc_args = []
+
+    # Copy pasted from snippet of Jan Schlüter, https://gist.github.com/edgarsi/ba0554229bff714a900f2766b0715114
+    import ctypes
+    libnames = ('libcuda.so', 'libcuda.dylib', 'cuda.dll')
+    for libname in libnames:
+        try:
+            cuda = ctypes.CDLL(libname)
+        except OSError:
+            continue
+        else:
+            break
+    else:
+        raise OSError("could not load any of: " + ' '.join(libnames))
+
+    error_str = ctypes.c_char_p()
+
+    exec_cuda('cuInit', lambda: cuda.cuInit(0))
+    nGpus = ctypes.c_int()
+    exec_cuda('cuDeviceGetCount', lambda: cuda.cuDeviceGetCount(ctypes.byref(nGpus)))
+    print("Found %d device(s)." % nGpus.value)
+    for i in range(nGpus.value):
+        device = ctypes.c_int()
+        exec_cuda('cuDeviceGet', lambda: cuda.cuDeviceGet(ctypes.byref(device), i))
+        cc_major = ctypes.c_int()
+        cc_minor = ctypes.c_int()
+        exec_cuda('cuDeviceComputeCapability', lambda: cuda.cuDeviceComputeCapability(ctypes.byref(cc_major), ctypes.byref(cc_minor), device))
+        compat = f'{cc_major.value}{cc_minor.value}'
+        nvcc_args.extend([
+            '-gencode', f'arch=compute_{compat},code=sm_{compat}',
+        ])
+        
+except Exception as e:
+    print(e)
+    nvcc_args = safe_nvcc_args
+
+nvcc_args.extend([
+    '-w' # Ignore compiler warnings.
+])
+
 cxx_args = ['-std=c++11', '-w']
+
+if __name__ == '__main__':
+    print(nvcc_args)
