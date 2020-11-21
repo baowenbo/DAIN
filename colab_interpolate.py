@@ -212,7 +212,8 @@ def normal_interpolate(input_frame):
     if not is_jumping_scene(input_frame, input_frame+1):
         interpolate(input_frame, input_frame+1)
     else:
-        copy(input_frame)
+        for _ in time_offsets:
+            copy(input_frame)
 
 
 def greased_interpolate(input_frame):
