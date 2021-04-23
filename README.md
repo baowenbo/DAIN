@@ -244,3 +244,4 @@ Colab file authors: [Styler00Dollar](https://github.com/styler00dollar) and [Alp
 
 ### License
 See [MIT License](https://github.com/baowenbo/DAIN/blob/master/LICENSE)
+(https://grisk.itch.io/dain-app) app
