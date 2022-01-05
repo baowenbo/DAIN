@@ -91,16 +91,7 @@ dependencies:
   - gcc_49=4.9.1=6
   - gmp=5.1.3=0
   - pip:
-    - correlation-cuda==0.0.0
     - dask==1.1.1
-    - depthflowprojection-cuda==0.0.0
-    - filterinterpolation-cuda==0.0.0
-    - flowprojection-cuda==0.0.0
-    - interpolation-cuda==0.0.0
-    - interpolationch-cuda==0.0.0
-    - mindepthflowprojection-cuda==0.0.0
-    - separableconv-cuda==0.0.0
-    - separableconvflow-cuda==0.0.0
     - torch==1.0.1.post2
 prefix: /home/wenbobao/anaconda3_new/envs/pytorch1.0.0
 
