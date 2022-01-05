@@ -58,7 +58,7 @@ parser.add_argument('--factor', type = float, default=0.2, help = 'the factor of
 parser.add_argument('--pretrained', dest='SAVED_MODEL', default=None, help ='path to the pretrained model weights')
 parser.add_argument('--no-date', action='store_true', help='don\'t append date timestamp to folder' )
 parser.add_argument('--use_cuda', default= True, type = bool, help='use cuda or not')
-parser.add_argument('--use_cudnn',default=1,type=int, help = 'use cudnn or not')
+parser.add_argument('--use_cudnn',default=0,type=int, help = 'use cudnn or not')
 parser.add_argument('--dtype', default=torch.cuda.FloatTensor, choices = [torch.cuda.FloatTensor,torch.FloatTensor],help = 'tensor data type ')
 # parser.add_argument('--resume', default='', type=str, help='path to latest checkpoint (default: none)')
 
@@ -117,8 +117,9 @@ with open(args.arg, 'w') as f:
     f.close()
 if args.use_cudnn:
     print("cudnn is used")
+    torch.backends.cudnn.enabled = True
     torch.backends.cudnn.benchmark = True  # to speed up the
 else:
     print("cudnn is not used")
+    torch.backends.cudnn.enabled = False
     torch.backends.cudnn.benchmark = False  # to speed up the
-
