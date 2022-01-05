@@ -46,7 +46,7 @@ dependencies:
   - xorg-libxdmcp=1.1.2=h14c3975_1007
   - blas=1.0=mkl
   - cffi=1.11.5=py36he75722e_1
-  - cudatoolkit=9.0=h13b8566_0
+  - cudatoolkit=10.0
   - dbus=1.13.2=h714fa37_1
   - freetype=2.9.1=h8a8886c_1
   - gst-plugins-base=1.14.0=hbbd80ab_1
@@ -85,7 +85,7 @@ dependencies:
   - xz=5.2.4=h14c3975_4
   - zlib=1.2.11=h7b6447c_3
   - zstd=1.3.7=h0b5b093_0
-  - pytorch=1.0.1=py3.6_cuda9.0.176_cudnn7.4.2_2
+  - pytorch=1.0.1=py3.6_cuda10.0.130_cudnn7.4.2_2
   - torchvision=0.2.1=py_2
   - cloog=0.18.1=1
   - gcc_49=4.9.1=6
